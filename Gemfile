@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Twitter bootstrap template
+gem 'bootstrap-sass', '~>3.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
