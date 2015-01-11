@@ -3,4 +3,47 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .header-logo {
 	padding-top: -5px;
+	padding-right: 10px;
+}
+.clear {
+	clear: both;
+}
+.navbar {
+	background-color: rgba(100, 100, 100, 0.5);
+	border: 0;
+}
+.navbar .nav > li {
+	color: black;
+}
+
+.navbar .nav > li > a {
+	color: white;
+}
+
+.home-body-bg-1 {
+	max-height: 550px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.caption {
+	position: absolute;
+	padding-top: 15%;
+	padding-left: 30%;
+}
+
+.home-body-bg-2 {
+	max-height: 550px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding: 10px;
 }
