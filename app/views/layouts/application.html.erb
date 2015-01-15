@@ -29,9 +29,9 @@
     	<ul class="nav navbar-nav">
     	</ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Mission', '#' %></li>
-        <li><%= link_to 'How Ketti Works', '#' %></li>
-        <li><%= link_to 'Contact', '#' %></li>
+        <li><%= link_to 'Add a Product', new_product_path %></li>
+        <li><%= link_to 'View Products', '#' %></li>
+        <li><%= link_to 'How Shop Ketti Works', '#' %></li>
         <li><%= link_to 'About', '#' %></li>
         <% if user_signed_in? != true %>
         	<li><%= link_to 'Login', new_user_session_path %></li>

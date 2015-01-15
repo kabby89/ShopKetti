@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 # Simple form gem
 gem 'simple_form'
 

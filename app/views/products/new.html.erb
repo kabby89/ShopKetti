@@ -1,0 +1,17 @@
+<br /><br />
+<div class="booyah-box col-xs-offset-2 col-xs-10">
+	<h1>Add a product</h1>
+	<%= simple_form_for @product, :url => products_path do |f| %>
+		<%= f.input :name %>
+		<%= f.input :description %>
+		<%= f.input :style_number %>
+		<%= f.input :color %>
+		<%= f.input :size %>
+		<%= f.input :inventory %>
+		<%= f.input :date_available %>
+		<%= f.input :price %>
+		<%= f.input :shipping_cost %>
+		<br />
+		<%= f.submit "Create", :class => 'btn btn-primary' %>
+	<% end %>
+</div>

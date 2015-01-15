@@ -17,12 +17,16 @@ $raleway: 'Raleway', sans-serif;
 	border: 0;
 }
 .navbar .nav > li {
-	color: black;
+	color: white;
 	font-family: $raleway;
 }
 
 .navbar .nav > li > a {
 	color: white;
+}
+
+.navbar .nav > li > a:hover {
+	color: #27A9E1;
 }
 
 .home-body-bg-1 {

@@ -2,6 +2,11 @@ Shopketti::Application.routes.draw do
   devise_for :users
   root 'products#index'
   resources :products
+
+   devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
+    get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup
+    get   "private_customer/sign_in" => "main#index", :as => :private_customer_signin
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
