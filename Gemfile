@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
+# multiple login gem
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 # Simple form gem
 gem 'simple_form'
 
