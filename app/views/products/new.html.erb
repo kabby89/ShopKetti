@@ -5,12 +5,13 @@
 		<%= f.input :name %>
 		<%= f.input :description %>
 		<%= f.input :style_number %>
-		<%= f.input :color %>
-		<%= f.input :size %>
-		<%= f.input :inventory %>
-		<%= f.input :date_available %>
-		<%= f.input :price %>
 		<%= f.input :shipping_cost %>
+		<h2>Colors</h2>
+		<div id="colors">
+			<%= simple_fields_for :colors do |color| %>
+				<%= render 'color_fields', :f => color %>
+			<% end %>
+		</div>
 		<br />
 		<%= f.submit "Create", :class => 'btn btn-primary' %>
 	<% end %>
