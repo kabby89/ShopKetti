@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+# Cocoon gem for nested forms
+gem 'cocoon'
+
 # multiple login gem
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 

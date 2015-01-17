@@ -1,7 +1,10 @@
 Shopketti::Application.routes.draw do
+  resources :projects
+
   devise_for :users
   root 'products#index'
   resources :products
+  resources :registration_splitter, :only => [:index]
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
     get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup

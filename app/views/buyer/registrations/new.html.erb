@@ -6,9 +6,100 @@
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <p><%= f.label "Email" %> -this will be used as your username to log in</p>
+      <%= f.email_field :email, autofocus: true, required: true %>
     </div>
+
+    <br />
+    <h3 class="text-center">Company Info</h3>
+    <hr />
+
+    <div class="field">
+      <%= f.label "Company Name" %>
+      <%= f.text_field :buyer_company_name, required: true, size: 35 %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Description" %><br />
+      <%= f.text_area :buyer_description, required: true, size: "60x7" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Phone #" %>
+      <%= f.telephone_field :buyer_phone %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Buyer Name" %>
+      <%= f.text_field :buyer_name, placeholder: "first & last name", size: 55  %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Buyer's Email" %>
+      <%= f.text_field :buyer_email, required: true, size: 55  %>
+    </div>
+    
+    <br />
+    <h3 class="text-center">Ship to address</h3>
+    <hr />
+
+    <div class="field">
+      <%= f.label "Ship to address" %><br />
+      <%= f.text_field :buyer_ship_to_address_1, required: true, size: 55 %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :buyer_ship_to_address_2, size: 55  %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :buyer_ship_to_address_3, size: 55  %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Ship to City" %>
+      <%= f.text_field :buyer_ship_to_city, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Ship to State" %>
+      <%= f.text_field :buyer_ship_to_state, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Ship to Zipcode" %>
+      <%= f.number_field :buyer_ship_to_zip, required: true, min: 10000, max: 99999 %>
+    </div>
+
+    <br />
+    <h3 class="text-center">Sold to address</h3>
+    <hr />
+
+    <div class="field">
+      <%= f.label "Sold to Address line 1" %><br />
+      <%= f.text_field :buyer_sold_to_address_1, required: true, size: 55 %>
+    </div>
+    
+    <div class="field">
+      <%= f.text_field :buyer_sold_to_address_2, size: 55 %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Sold to City" %>
+      <%= f.text_field :buyer_sold_to_city, required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.label "Sold to State" %>
+      <%= f.text_field :buyer_sold_to_state, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Sold to Zipcode" %>
+      <%= f.number_field :buyer_sold_to_zip, required: true, min: 10000, max: 99999 %>
+    </div>
+
+    <br /><hr />
 
     <div class="field">
       <%= f.label :password %>
