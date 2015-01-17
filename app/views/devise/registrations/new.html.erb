@@ -1,14 +1,65 @@
 <br /><br /><br />
 <div class="booyah-box col-xs-offset-2 col-xs-6">
-  <h2>Register</h2>
+  <h2>Creator Registration</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
+
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <p><%= f.label :email %> -this will be used to log in</p>
+      <%= f.email_field :email, autofocus: true, size: 55, required: true %>
     </div>
+
+    <br />
+    <h3 class="text-center">Company Info</h3>
+    <hr />
+    
+    <div class="field">
+      <%= f.label "Company Name" %>
+      <%= f.text_field :seller_company_name, size: 45, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Description" %><br />
+      <%= f.text_area :seller_company_description, required: true, size: "60x7" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Contact Email" %>
+      <%= f.text_field :seller_email, size: 55, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Contact Phone" %>
+      <%= f.text_field :seller_telephone, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Address" %><br />
+      <%= f.text_field :seller_address_1, required: true, size: 55 %>
+    </div>
+
+    <div class="field">
+      <%= f.text_field :seller_address_2, size: 55 %>
+    </div>
+  
+    <div class="field">
+      <%= f.label "Company City" %><br />
+      <%= f.text_field :seller_city, required: true, size: 35 %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company State" %><br />
+      <%= f.text_field :seller_state, required: true, size: 35 %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Zipcode" %><br />
+      <%= f.text_field :seller_zipcode, required: true, size: 35 %>
+    </div>
+
+      <%= f.hidden_field :user_type, :value => :creator %>
 
     <div class="field">
       <%= f.label :password %>

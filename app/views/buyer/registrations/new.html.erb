@@ -1,13 +1,13 @@
 <br /><br /><br />
 <div class="booyah-box col-xs-offset-2 col-xs-6">
-  <h2>Register</h2>
+  <h2>Retailer Registration</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="field">
-      <p><%= f.label "Email" %> -this will be used as your username to log in</p>
-      <%= f.email_field :email, autofocus: true, required: true %>
+      <p><%= f.label "Email" %> -this will be used to log in</p>
+      <%= f.email_field :email, autofocus: true, required: true, size: 55 %>
     </div>
 
     <br />
@@ -98,6 +98,8 @@
       <%= f.label "Sold to Zipcode" %>
       <%= f.number_field :buyer_sold_to_zip, required: true, min: 10000, max: 99999 %>
     </div>
+
+      <%= f.hidden_field :user_type, :value => 'retailer' %>
 
     <br /><hr />
 
