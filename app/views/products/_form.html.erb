@@ -1,0 +1,21 @@
+<%= simple_form_for @product do |f| %>
+	<%= f.error_notification %>
+	
+	<div class="form-inputs">
+		<%= f.input :name %>
+		<%= f.input :description %>
+		<%= f.input :style_number %>
+		<%= f.input :shipping_cost %>
+	</div>
+	<h2>Colors</h2>
+	<div id="colors">
+		<%= f.simple_fields_for :colors do |color| %>
+			<%= render 'color_fields', :f => color %>
+		<% end %>
+		<div class="links"> 
+			<%= link_to_add_association 'Add Color', f, :colors %>
+		</div>
+	</div
+	<br />
+	<%= f.submit "Create", :class => 'btn btn-primary' %>
+<% end %>

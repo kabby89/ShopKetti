@@ -3,7 +3,7 @@ Shopketti::Application.routes.draw do
 
   devise_for :users
   root 'products#index'
-  resources :products
+  resources :products 
   resources :registration_splitter, :only => [:index]
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
