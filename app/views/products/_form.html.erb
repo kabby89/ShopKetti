@@ -15,7 +15,16 @@
 		<div class="links"> 
 			<%= link_to_add_association 'Add Color', f, :colors %>
 		</div>
-	</div
+	</div>
+	<h2>Sizes</h2>
+	<div id="sizes">
+		<%= f.simple_fields_for :sizes do |size| %>
+			<%= render 'size_fields', :f => size %>
+		<% end %>
+		<div class="links">
+			<%= link_to_add_association 'Add Size', f, :sizes %>
+		</div>
+	</div>
 	<br />
 	<%= f.submit "Create", :class => 'btn btn-primary' %>
 <% end %>

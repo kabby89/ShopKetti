@@ -2,8 +2,9 @@ Shopketti::Application.routes.draw do
   resources :projects
 
   devise_for :users
-  root 'products#index'
+  root 'static_home_page#index'
   resources :products 
+  resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
