@@ -4,10 +4,9 @@ Shopketti::Application.routes.draw do
   devise_for :users
   root 'static_home_page#index'
   resources :products 
-  resources :dashboard, :only => [:index] do
-    resources :product_management, :only => [:index]
+  namespace :creator do 
+    resources :dashboards, :only => [:index]
   end
-
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
 
