@@ -1,0 +1,2 @@
+module Creator::ProductManagementHelper
+end

@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
 	respond_to :html
 	def index
-		@product = Product.all
+		@products = Product.all
 	end
 
 	def new
@@ -23,6 +23,11 @@ class ProductsController < ApplicationController
 		respond_with(@product)
 	end
 
+	def update
+    @product.update(product_params)
+    respond_with(@product)
+  end
+
 	private
 
 	helper_method :current_product
@@ -31,6 +36,6 @@ class ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name, :description, :style_number, :date_available, :shipping_cost, :sku_database, color_attributes: [:id, :hue, :done, :_destroy], size_attributes: [:id, :measurement, :done, :_destroy])
+		params.require(:product).permit(:name, :description, :style_number, :date_available, :shipping_cost, :sku_database, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy])
 	end
 end

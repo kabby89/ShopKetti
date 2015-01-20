@@ -1,0 +1,2 @@
+module Market::StoreHelper
+end

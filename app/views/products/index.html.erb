@@ -1,0 +1,23 @@
+<br /><br />
+<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+	<% @products.each do |product| %>
+		<div class="booyah-box marketplace-product">
+			<h2><%= link_to product.name, product_path(product) %></h2>
+			<p><%= product.description %></p>
+			<p>Style #: <%= product.style_number %></p>
+			<!-- <h3><%# product.user.company_name %></h3> -->
+			<h3>Colors</h3>
+			<p>
+				<% product.colors.each do |color| %>
+					<%= color.hue.capitalize %>
+				<% end %>
+			</p>
+			<h3>Sizes</h3>
+			<p>
+				<% product.sizes.each do |size| %>
+					<%= size.measurement.capitalize %>
+				<% end %>
+			</p>
+		</div> 
+	<% end %>
+</div>

@@ -11,5 +11,19 @@
   <%= @product.description %>
 </p>
 
+<p>
+	<strong>Colors:</strong>
+	<% @product.colors.each do |color| %>
+		<%= color.hue %>
+	<% end %>
+</p>
+
+<p>
+	<strong>Sizes:</strong>
+	<% @product.sizes.each do |size| %>
+		<%= size.measurement %>
+	<% end %>
+</p>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', product_path %>
