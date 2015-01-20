@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Market::StoreControllerTest < ActionController::TestCase
+class Market::StoresControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
