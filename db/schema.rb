@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119234521) do
+ActiveRecord::Schema.define(version: 20150124163533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,16 +31,11 @@ ActiveRecord::Schema.define(version: 20150119234521) do
     t.string   "style_number"
     t.decimal  "shipping_cost", precision: 19, scale: 2
     t.integer  "user_id"
+    t.string   "image"
+    t.json     "images"
   end
 
   add_index "products", ["name", "user_id", "style_number"], name: "index_products_on_name_and_user_id_and_style_number", using: :btree
-
-  create_table "projects", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
@@ -69,16 +64,6 @@ ActiveRecord::Schema.define(version: 20150119234521) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "tasks", force: true do |t|
-    t.string   "description"
-    t.boolean  "done"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                      default: "", null: false

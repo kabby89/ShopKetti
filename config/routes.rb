@@ -1,6 +1,4 @@
 Shopketti::Application.routes.draw do
-  resources :projects
-
   devise_for :users
   root 'static_home_page#index'
   resources :products 

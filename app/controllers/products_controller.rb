@@ -36,6 +36,6 @@ class ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name, :description, :style_number, :date_available, :shipping_cost, :sku_database, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy])
+		params.require(:product).permit(:name, :description, :style_number, :date_available, :image, :shipping_cost, :sku_database, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy])
 	end
 end
