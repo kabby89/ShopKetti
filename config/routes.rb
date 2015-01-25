@@ -6,7 +6,7 @@ Shopketti::Application.routes.draw do
     resources :dashboards, :only => [:index]
   end
   namespace :market do
-    resources :stores, :only => [:index]
+    resources :stores, :only => [:index, :show]
   end
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]

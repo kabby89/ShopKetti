@@ -4,16 +4,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def devise_paramter_sanitizer
-  	if resource_class == User
-  		User::ParameterSanitizer.new(User, :user, :seller_company_name)
-  	else
-  		super
-  	end
-  end
   	protected
 
   	def configure_permitted_parameters
-   	devise_parameter_sanitizer.for(:sign_up) << :user_type
+   	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:user_type, :id, :user_id, :company_name, :email, :password, :password_confirmation, :image, :company_description, :seller_address_1, :seller_address_2, :seller_city, :seller_state, :seller_zipcode, :seller_telephone, :buyer_ship_to_address_1, :buyer_ship_to_address_2, :buyer_ship_to_address_3, :buyer_ship_to_city, :buyer_ship_to_state, :buyer_ship_to_zip, :buyer_sold_to_address_1, :buyer_sold_to_address_2, :buyer_sold_to_address_3, :buyer_sold_to_city, :buyer_sold_to_state, :buyer_sold_to_zip, :buyer_phone, :buyer_name)} 
   	end
 end

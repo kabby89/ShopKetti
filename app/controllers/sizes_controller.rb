@@ -1,5 +1,4 @@
 class SizesController < ApplicationController
-	# this needs to create the sizes and then pass the size ids to the sku controller
 
 	def create
 		@size = products.Size.create(size_params)

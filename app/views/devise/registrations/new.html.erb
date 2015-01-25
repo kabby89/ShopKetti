@@ -17,17 +17,17 @@
     
     <div class="field">
       <%= f.label "Company Name" %>
-      <%= f.text_field :seller_company_name, size: 45, required: true %>
+      <%= f.text_field :company_name, size: 45, required: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Logo" %>
+      <%= f.file_field :image, required: true %>
     </div>
 
     <div class="field">
       <%= f.label "Company Description" %><br />
-      <%= f.text_area :seller_company_description, required: true, size: "60x7" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Contact Email" %>
-      <%= f.text_field :seller_email, size: 55, required: true %>
+      <%= f.text_area :company_description, required: true, size: "60x7" %>
     </div>
 
     <div class="field">

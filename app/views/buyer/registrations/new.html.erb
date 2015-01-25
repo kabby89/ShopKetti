@@ -16,12 +16,17 @@
 
     <div class="field">
       <%= f.label "Company Name" %>
-      <%= f.text_field :buyer_company_name, required: true, size: 35 %>
+      <%= f.text_field :company_name, required: true, size: 35 %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Company Logo" %>
+      <%= f.file_field :image, required: true %>
     </div>
 
     <div class="field">
       <%= f.label "Company Description" %><br />
-      <%= f.text_area :buyer_description, required: true, size: "60x7" %>
+      <%= f.text_area :company_description, required: true, size: "60x7" %>
     </div>
 
     <div class="field">
@@ -32,11 +37,6 @@
     <div class="field">
       <%= f.label "Buyer Name" %>
       <%= f.text_field :buyer_name, placeholder: "first & last name", size: 55  %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Buyer's Email" %>
-      <%= f.text_field :buyer_email, required: true, size: 55  %>
     </div>
     
     <br />

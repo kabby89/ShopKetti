@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124165155) do
+ActiveRecord::Schema.define(version: 20150125155528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,27 +65,22 @@ ActiveRecord::Schema.define(version: 20150124165155) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                      default: "", null: false
-    t.string   "encrypted_password",         default: "", null: false
+    t.string   "email",                   default: "", null: false
+    t.string   "encrypted_password",      default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",              default: 0,  null: false
+    t.integer  "sign_in_count",           default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "seller_company_name"
-    t.text     "seller_company_description"
     t.string   "seller_address_1"
     t.string   "seller_address_2"
     t.string   "seller_city"
     t.string   "seller_state"
     t.string   "seller_zipcode"
     t.string   "seller_telephone"
-    t.string   "seller_email"
-    t.string   "paypal_email"
-    t.string   "seller_logo"
     t.string   "seller_tax_id"
     t.string   "user_type"
     t.datetime "created_at"
@@ -102,18 +97,16 @@ ActiveRecord::Schema.define(version: 20150124165155) do
     t.string   "buyer_sold_to_city"
     t.string   "buyer_sold_to_state"
     t.string   "buyer_sold_to_zip"
-    t.string   "buyer_company_name"
-    t.text     "buyer_description"
-    t.string   "buyer_email"
     t.string   "buyer_phone"
     t.string   "buyer_name"
-    t.string   "buyer_bank_routing"
-    t.string   "buyer_bank_acct"
-    t.string   "buyer_paypal_email"
-    t.string   "buyer_account_type"
+    t.string   "company_name"
+    t.text     "company_description"
+    t.string   "image"
   end
 
+  add_index "users", ["buyer_ship_to_address_1", "buyer_ship_to_address_2", "buyer_ship_to_address_3", "buyer_ship_to_city", "buyer_ship_to_state", "buyer_ship_to_zip", "email", "buyer_sold_to_address_1", "buyer_sold_to_address_2", "buyer_sold_to_address_3", "buyer_sold_to_city", "buyer_sold_to_state", "buyer_sold_to_zip"], name: ":buyer_address_index", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["seller_address_1", "seller_address_2", "seller_city", "seller_state", "seller_zipcode", "seller_telephone", "email"], name: "seller_address_index", using: :btree
 
 end
