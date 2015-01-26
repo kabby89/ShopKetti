@@ -1,0 +1,2 @@
+module Creator::ManagementHelper
+end

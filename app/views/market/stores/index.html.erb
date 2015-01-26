@@ -3,14 +3,14 @@
 	<h1>Marketplace</h1>
 </div>
 <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-	<% @users.each do |user| %>
+	<% @users.each do |store| %>
 		<div class="booyah-box market-box col-xs-12 col-sm-2">
-			<% if user.user_type == 'creator' %>
-				<%= link_to market_store_path(@store) do %>
-					<%= image_tag user.image %>	
-					<%= user.company_name %>
-					<%= user.company_description %>
-					<%= user.email %>
+			<% if store.user_type == 'creator' %>
+				<%= link_to market_store_path(store) do %>
+					<%= image_tag store.image %>	
+					<%= store.company_name %>
+					<%= store.company_description %>
+					<%= store.email %>
 				<% end %>
 			<% end %>
 		</div>
