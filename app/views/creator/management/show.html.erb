@@ -1,6 +1,22 @@
 <br /><br /><br />
 <h1 class="text-center">Product Management</h1>
-<% current_user.products.each do |product| %>
-	<%= product.name %>
-
-<% end %>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+	<% @products.each do |product| %>
+		<div class="col-sm-3 booyah-box">
+			<%# product.image %><!-- product image -->
+			<h4><%= link_to product_path(product) do %>
+					<%= product.name %>
+				<% end %>
+			</h4>
+			<p><%= product.description %></h4>
+				<% product.colors.each do |color| %>
+					<p><strong>Colors:</strong>
+						<%= color.hue %>
+					</p>
+				<% end %>
+				<% product.sizes.each do |size| %>
+					<p><strong>Sizes:</strong>
+						<%= size.measurement %>
+				<% end %>
+		</div>
+	<% end %>
