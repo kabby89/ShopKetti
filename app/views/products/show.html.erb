@@ -4,6 +4,12 @@
 	<p>
   		<strong>Name:</strong>
   		<%= @product.name %>
+	</p>
+	<p>
+		<strong>Images:</strong>
+		<% @product.product_images.each do |image| %>
+			<%= image_tag image.image %>
+		<% end %>
 	</p>	
 
 	<p>

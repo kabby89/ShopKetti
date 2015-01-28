@@ -7,7 +7,12 @@
 		<%= f.input :style_number %>
 		<%= f.input :shipping_cost %><br />
 		<p><strong>Product Images</strong></p>
-		<%= f.file_field :images, multiple: true %>
+		<%= f.simple_fields_for :product_images do |image| %>
+			<%= render 'image_fields', :f => image %>
+		<% end %>
+		<div class="links">
+			<%= link_to_add_association 'Add Image', f, :product_images %>
+		</div>
 	</div>
 	<h2>Colors</h2>
 	<div id="colors">

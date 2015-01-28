@@ -13,10 +13,7 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		@product = Product.new(product_params)
-		# @product = current_user.products.create(product_params)
-		@product.user = current_user
-		@product.save
+		@product = current_user.products.create(product_params)
 		respond_with(@product)
 	end
 
@@ -38,6 +35,6 @@ class ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name, :description, :style_number, :date_available, :images, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy])
+		params.require(:product).permit(:name, :description, :style_number, :date_available, :image, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy], product_images_attributes: [:id, :image, :done, :_destroy])
 	end
 end
