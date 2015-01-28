@@ -1,23 +1,25 @@
 <br /><br /><br />
 <div class="col-xs-12 col-sm-offset-1 col-sm-10 booyah-box">
+	<%= image_tag current_store.image %>
 	<h1><%= current_store.company_name %></h1>
 	<h4><%= current_store.company_description %></h4>
-	<%= image_tag current_store.image %>
+	<br />
 	<% @products.each do |product| %>
 		<div class="col-xs-3 booyah-box">
-			<%= image_tag product.images %>
-			<%= product.name %>
-			<p>Colors</p>
-			<% product.colors.each do |color| %>
-				<%= color.hue %>
-			<% end %>
-			<p>Sizes</p>
-			<% product.sizes.each do |size| %>
-				<%= size.measurement %>
-			<% end %>
-			<%= product.description %>
-			<%= product.style_number %>
-			<%= product.shipping_cost %>
+			<h4><%= product.name.capitalize %></h4>
+			<p><strong>Colors:</strong>
+				<% product.colors.each do |color| %>
+					<%= color.hue %>
+				<% end %>
+			</p>
+			<p><strong>Sizes:</strong>
+				<% product.sizes.each do |size| %>
+					<%= size.measurement %>
+				<% end %>
+			</p>
+			<p><%= product.description %></p>
+			<p>Style #:<%= product.style_number %></p>
+			<p>Shipping Cost: $<%= product.shipping_cost %></p>
 		</div>
 	<% end %>
 </div>
