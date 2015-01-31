@@ -22,6 +22,10 @@ class ProductsController < ApplicationController
 		respond_with(@product)
 	end
 
+	def edit
+		@product = current_product
+	end
+
 	def update
     @product.update(product_params)
     respond_with(@product)
