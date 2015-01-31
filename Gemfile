@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
+# Figaro secure configuration gem
+gem 'figaro'
+
 # Carrierwave Image uploader
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog', '~> 1.3.1'
 
 # Cocoon gem for nested forms
 gem 'cocoon'
