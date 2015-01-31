@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 # Carrierwave Image uploader
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Cocoon gem for nested forms
 gem 'cocoon'
