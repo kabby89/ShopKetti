@@ -6,10 +6,14 @@
   		<%= @product.name %>
 	</p>
 	<p>
-		<strong>Images:</strong>
-		<% @product.product_images.each do |image| %>
-			<%= image_tag image.image_url(:large) %>
-		<% end %>
+		<strong>Images:</strong><br />
+		<div class="col-xs-12">
+			<% @product.product_images.each do |image| %>
+				<div class="col-xs-6">
+					<%= image_tag image.image_url(:large) %>
+				</div>
+			<% end %>
+		</div>
 	</p>	
 
 	<p>
