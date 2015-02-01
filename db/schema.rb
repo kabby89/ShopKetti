@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131184502) do
+ActiveRecord::Schema.define(version: 20150201034327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,36 @@ ActiveRecord::Schema.define(version: 20150131184502) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "sku_id"
+    t.integer  "order_id"
+    t.decimal  "price_per_unit", precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price",    precision: 12, scale: 3
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["sku_id"], name: "index_order_items_on_sku_id", using: :btree
+
+  create_table "order_statuses", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.decimal  "subtotal",        precision: 12, scale: 3
+    t.decimal  "shipping",        precision: 12, scale: 3
+    t.decimal  "total",           precision: 12, scale: 3
+    t.integer  "order_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
 
   create_table "product_images", force: true do |t|
     t.integer  "product_id"
@@ -41,6 +71,7 @@ ActiveRecord::Schema.define(version: 20150131184502) do
     t.string   "style_number"
     t.decimal  "shipping_cost", precision: 19, scale: 2
     t.integer  "user_id"
+    t.boolean  "active"
   end
 
   add_index "products", ["name", "user_id", "style_number"], name: "index_products_on_name_and_user_id_and_style_number", using: :btree
