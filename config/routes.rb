@@ -1,7 +1,12 @@
 Shopketti::Application.routes.draw do
+  get "order_items/create"
+  get "order_items/update"
+  get "order_items/destroy"
+  get "carts/show"
   devise_for :users
   root 'static_home_page#index'
   resources :products 
+  resources :order_items, only: [:create, :update, :destroy]
   namespace :creator do 
     resources :dashboards, :only => [:index]
     resources :management, :only => [:index, :show]
