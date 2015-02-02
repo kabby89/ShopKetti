@@ -12,7 +12,9 @@ Shopketti::Application.routes.draw do
     resources :management, :only => [:index, :show]
   end
   namespace :market do
-    resources :stores, :only => [:index, :show]
+    resources :stores, :only => [:index, :show] do
+      resources :products, :only => [:index, :show]
+    end
   end
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]

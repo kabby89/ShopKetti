@@ -1,0 +1,36 @@
+<br /><br /><br />
+<p id="notice"><%= notice %></p>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+	<p>
+  		<strong>Name:</strong>
+  		<%= @product.name %>
+	</p>
+	<p>
+		<strong>Images:</strong><br />
+		<div class="col-xs-12">
+			<% @product.product_images.each do |image| %>
+				<div class="col-xs-6">
+					<%= image_tag image.image_url(:large) %>
+				</div>
+			<% end %>
+		</div>
+	</p>	
+
+	<p>
+  		<strong>Description:</strong>
+  		<%= @product.description %>
+	</p>
+
+	<p>
+		<strong>Colors:</strong>
+		<% @product.colors.each do |color| %>
+			<%= color.hue %>
+		<% end %>
+	</p>
+
+	<p>
+		<strong>Sizes:</strong>
+		<% @product.sizes.each do |size| %>
+			<%= size.measurement %>
+		<% end %>
+	</p>

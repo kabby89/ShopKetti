@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Shopketti</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 
   <% if request.ssl? %><!-- added for shopping cart -->
@@ -12,6 +12,8 @@
     <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
   <% end %>
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
@@ -49,7 +51,7 @@
           <li><%= link_to 'About', '#' %></li>  
         	<li><%= link_to 'Login', new_user_session_path %></li>
         	<li><%= link_to 'Register', registration_splitter_index_path %></li>
-          <li><%= render 'layouts/cart_text' %></li>
+          <li><%# render 'layouts/cart_text' %></li>
         <% end %>
         <% if user_signed_in? == true %>
         	<li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
