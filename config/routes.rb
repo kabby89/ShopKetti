@@ -12,7 +12,8 @@ Shopketti::Application.routes.draw do
     resources :management, :only => [:index, :show]
   end
   namespace :market do
-    resources :stores, :only => [:index, :show] do
+    resources :stores, :only => [:index, :show]
+    namespace :stores do
       resources :products, :only => [:index, :show]
     end
   end

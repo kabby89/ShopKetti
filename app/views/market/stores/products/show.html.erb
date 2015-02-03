@@ -21,16 +21,7 @@
   		<%= @product.description %>
 	</p>
 
-	<p>
-		<strong>Colors:</strong>
-		<% @product.colors.each do |color| %>
-			<%= color.hue %>
-		<% end %>
-	</p>
-
-	<p>
-		<strong>Sizes:</strong>
-		<% @product.sizes.each do |size| %>
-			<%= size.measurement %>
-		<% end %>
-	</p>
+	<% @sku.each do |sku| %>
+		<%= sku.color_id %>
+	<% end %>
+</div>
