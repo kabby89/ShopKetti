@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201034327) do
+ActiveRecord::Schema.define(version: 20150204011556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150201034327) do
     t.string   "style_number"
     t.decimal  "shipping_cost", precision: 19, scale: 2
     t.integer  "user_id"
-    t.boolean  "active"
+    t.integer  "sku_id"
   end
 
   add_index "products", ["name", "user_id", "style_number"], name: "index_products_on_name_and_user_id_and_style_number", using: :btree
