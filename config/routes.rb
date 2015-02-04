@@ -19,7 +19,7 @@ Shopketti::Application.routes.draw do
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
   resources :order_items, :only => [:create, :update, :destroy]
-  resource :carts, :only => [:show]
+  resource :cart, :only => [:show]
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
     get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup
