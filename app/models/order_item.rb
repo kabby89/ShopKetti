@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-	belongs_to :product
+	belongs_to :sku
 	belongs_to :order
 
 	validates :quantity, presence: true, numericality: {only_integer: true, greater_than: 0 }
@@ -21,7 +21,7 @@ class OrderItem < ActiveRecord::Base
 	end
 
 	private
-	def product_present
+	def sku_present
 		if sku.nil?
 			errors.add(:sku, "is not valid or active at this time.")
 		end

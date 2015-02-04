@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-  	@order = current_order
+    @order = current_order
   	@order_item = @order.order_items.find(params[:id])
   	@order_item.update_attributes(order_item_params)
   	@order_items = @order.order_items
@@ -22,6 +22,6 @@ class OrderItemsController < ApplicationController
 
 private
   def order_item_params
-    params.require(:order_item).permit(:quantity, :sku_id)
+    params.require(:order_item).permit(:quantity, :sku_id, :color_id, :size_id)
   end
 end

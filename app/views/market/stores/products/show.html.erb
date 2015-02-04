@@ -20,8 +20,16 @@
   		<strong>Description:</strong>
   		<%= @product.description %>
 	</p>
-
-	<% @product.skus.each do |sku| %>
-
+	<%= form_for @order_item, remote: true do |item| %>
+		<% @product.skus.each do |sku| %>
+			<% sku.product.colors.each do |color| %>
+				<%= color.hue %><br />
+				<% sku.product.sizes.each do |size| %>
+					<%= size.measurement %>
+					<%= item.number_field :quantity, class: "form-control; width: 50px" %>
+				<% end %><br />
+			<% end %>
+		<% end %><br />
+		<%= item.submit "Add to Cart", class: "btn btn-primary" %><br /><br />
 	<% end %>
 </div>

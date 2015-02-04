@@ -1,12 +1,11 @@
 Shopketti::Application.routes.draw do
-  get "order_items/create"
-  get "order_items/update"
-  get "order_items/destroy"
-  get "carts/show"
+  # get "order_items/create"
+  # get "order_items/update"
+  # get "order_items/destroy"
+  # get "carts/show" => "cart#show"
   devise_for :users
   root 'static_home_page#index'
   resources :products 
-  resources :order_items, only: [:create, :update, :destroy]
   namespace :creator do 
     resources :dashboards, :only => [:index]
     resources :management, :only => [:index, :show]
@@ -19,6 +18,8 @@ Shopketti::Application.routes.draw do
   end
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
+  resources :order_items, :only => [:create, :update, :destroy]
+  resource :carts, :only => [:show]
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
     get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup
