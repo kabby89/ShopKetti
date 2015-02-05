@@ -6,6 +6,18 @@
   		<%= @product.name %>
 	</p>
 	<p>
+		<strong>Style #:</strong>
+		<%= @product.style_number %>
+	</p>
+	<p>
+		<strong>Price per unit</strong>
+		$<%= @product.price %>
+	</p>
+	<p>
+		<strong>Shipping Cost per unit</strong>
+		$<%= @product.shipping_cost %>
+	</p>
+	<p>
 		<strong>Images:</strong><br />
 		<div class="col-xs-12">
 			<% @product.product_images.each do |image| %>

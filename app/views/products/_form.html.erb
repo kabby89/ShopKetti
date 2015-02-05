@@ -5,6 +5,7 @@
 		<%= f.input :name %>
 		<%= f.input :description %>
 		<%= f.input :style_number %>
+		<%= f.input :price %>
 		<%= f.input :shipping_cost %><br />
 		<p><strong>Product Images</strong></p>
 		<%= f.simple_fields_for :product_images do |image| %>
@@ -32,6 +33,7 @@
 			<%= link_to_add_association 'Add Size', f, :sizes %>
 		</div>
 	</div>
+
 	<br />
-	<%= f.submit "Create", :class => 'btn btn-primary' %>
+	<%= f.submit "Create Product", :class => 'btn btn-primary' %>
 <% end %>

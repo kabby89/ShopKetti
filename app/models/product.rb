@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :colors, :reject_if => :all_blank, :allow_destroy => :true
 	accepts_nested_attributes_for :sizes, :allow_destroy => :true
 	accepts_nested_attributes_for :product_images, :reject_if => :all_blank ,:allow_destroy => :true
+	accepts_nested_attributes_for :skus
 	before_create :generate_skus!
 
 	def generate_skus!
