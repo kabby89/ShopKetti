@@ -11,11 +11,11 @@
 	</p>
 	<p>
 		<strong>Price per unit</strong>
-		$<%= @product.price %>
+		<%= number_to_currency @product.price %>
 	</p>
 	<p>
 		<strong>Shipping Cost per unit</strong>
-		$<%= @product.shipping_cost %>
+		<%= number_to_currency @product.shipping_cost %>
 	</p>
 	<p>
 		<strong>Images:</strong><br />
@@ -32,7 +32,9 @@
   		<strong>Description:</strong>
   		<%= @product.description %>
 	</p>
+
 	<%= form_for @order_item, remote: true do |item| %>
+		Price: <%= number_to_currency @product.price %><br/><br />
 		<% @product.skus.each do |sku| %>
 			<% sku.product.colors.each do |color| %>
 				<%= color.hue %><br />
@@ -41,6 +43,7 @@
 					<%= item.number_field :quantity, class: "form-control; width: 50px" %>
 				<% end %><br />
 			<% end %>
+			<%= item.hidden_field :sku_id, value: sku.id %>
 		<% end %><br />
 		<%= item.submit "Add to Cart", class: "btn btn-primary" %><br /><br />
 	<% end %>
