@@ -1,14 +1,17 @@
 class OrderItem < ActiveRecord::Base
 	belongs_to :sku
 	belongs_to :order
-	belongs_to :product
 
 	validates :quantity, presence: true, numericality: {only_integer: true, greater_than: 0 }
 	validate :sku_present
 	validate :order_present
-	validate :product_present
+
 
 	before_save :finalize
+
+	def product
+		sku.product
+	end
 
 	def unit_price
 		if persisted?
@@ -19,7 +22,7 @@ class OrderItem < ActiveRecord::Base
 	end
 
 	def total_price
-		price * quantity
+		sku.product.price * quantity
 	end
 
 	private
@@ -29,11 +32,6 @@ class OrderItem < ActiveRecord::Base
 		end
 	end
 
-	def product_present
-		if product.nil?
-			errors.add(:product, "is not valid or active at time.")
-		end
-	end
 
 	def order_present
 		if order.nil?
@@ -42,8 +40,8 @@ class OrderItem < ActiveRecord::Base
 	end
 
 	def finalize
-		self[:price] = price
-		self[:total_price] = quantity * self[:price]
+		self[:price_per_unit] = product.price
+		self[:total_price] = quantity * self[:price_per_unit]
 	end
 
 end

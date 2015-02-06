@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
 	def generate_skus!
 		colors.each do |color|
 			sizes.each do |size|
-				self.skus.build(:color_id => color.id, :size_id => size.id)
+				self.skus.build(:color => color, :size => size)
 			end
 		end
 	end

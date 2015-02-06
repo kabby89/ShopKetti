@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create]
 	before_action :current_product, only: [:show, :edit, :update, :destroy]
-
+	helper_method :current_product
+	
 	respond_to :html
 	def index
 		@products = Product.all
@@ -33,7 +34,6 @@ class ProductsController < ApplicationController
 
 	private
 
-	helper_method :current_product
 	def current_product
 		@current_product = Product.find(params[:id])
 	end

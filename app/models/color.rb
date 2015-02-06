@@ -1,5 +1,5 @@
 class Color < ActiveRecord::Base
 	belongs_to :product
-	belongs_to :sku
+	has_many :skus
 
 end

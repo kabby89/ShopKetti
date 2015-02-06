@@ -33,17 +33,15 @@
   		<%= @product.description %>
 	</p>
 
-	<%= form_for @order_item, remote: true do |item| %>
+	<%= simple_form_for :cart, :url => order_items_path do |item| %>
 		Price: <%= number_to_currency @product.price %><br/><br />
 		<% @product.skus.each do |sku| %>
-			<% sku.product.colors.each do |color| %>
-				<%= color.hue %><br />
-				<% sku.product.sizes.each do |size| %>
-					<%= size.measurement %>
-					<%= item.number_field :quantity, class: "form-control; width: 50px" %>
-				<% end %><br />
+			<%= item.simple_fields_for "order_items[]", OrderItem.new do |sku_fields| %>
+				<%= sku.color.hue %>
+				<%= sku.size.measurement %>
+				<%= sku_fields.number_field :quantity, class: "form-control; width: 50px" %>
+				<%= sku_fields.hidden_field :sku_id, value: sku.id %>
 			<% end %>
-			<%= item.hidden_field :sku_id, value: sku.id %>
 		<% end %><br />
 		<%= item.submit "Add to Cart", class: "btn btn-primary" %><br /><br />
 	<% end %>
