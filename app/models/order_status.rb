@@ -1,3 +1,3 @@
 class OrderStatus < ActiveRecord::Base
-	has_manny :orders
+	has_many :orders
 end
