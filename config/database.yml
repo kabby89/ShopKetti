@@ -58,9 +58,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: shopketti_production
+  database: d8mt5q0uc9e6qi
   pool: 5
-  username: postgres
-  password: password
-  host: localhost
+  username: ajbeghuzosaemp
+  password: i9sU7Azog7Y6HFs1wyETzC0ZZl
+  host: ec2-54-225-115-77.compute-1.amazonaws.com
+  port: 5432
   
