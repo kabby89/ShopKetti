@@ -7,6 +7,6 @@ class ProductImagesController < ApplicationController
 
 
 	def image_params
-		params.require(:product_image).permit(:image, :product_id, :user_id)
+		params.require(:product_image).permit(:image, :product_id, :user_id, :featured)
 	end
 end

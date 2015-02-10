@@ -17,4 +17,13 @@ class Product < ActiveRecord::Base
 			end
 		end
 	end
+
+	def first_product
+		@product = Product.find(params[:id])
+		@product.product_images.images.each do |picture|
+			if picture.order == 1
+				@first_product = picture
+			end
+		end
+	end
 end

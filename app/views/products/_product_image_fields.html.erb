@@ -1,5 +1,5 @@
 <div class="nested-fields">
 	<%= f.file_field :image %>
-	<%# f.input :done, :as => :boolean %>
+	<%= f.input :featured, label: 'Featured Pictue?', as: :boolean, type: :check_boxes %>
 	<%= link_to_remove_association "remove image", f %>
 </div>
