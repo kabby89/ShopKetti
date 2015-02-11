@@ -16,6 +16,9 @@ Shopketti::Application.routes.draw do
       resources :products, :only => [:index, :show]
     end
   end
+  namespace :carts do
+    resources :checkouts, :only => [:show, :index]
+  end
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
   resources :order_items, :only => [:create, :update, :destroy]
