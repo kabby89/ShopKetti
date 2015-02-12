@@ -27,4 +27,10 @@ Shopketti::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  #App specific information
+  CLIENT_ID = 11849
+  CLIENT_SECRET = "7a6237462f"
+  USE_STAGE = true
+  WEPAY = WePay.new(CLIENT_ID, CLIENT_SECRET, USE_STAGE)
 end

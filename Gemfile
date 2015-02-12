@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+# WePay
+gem 'wepay'
+
 # Figaro secure configuration gem
 gem 'figaro'
 
@@ -56,8 +59,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# Use ActiveModel has_secure_password 
+# gem 'bcrypt-ruby', '~> 3.0.0', :require => "bcrypt"
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -9,6 +9,9 @@ Shopketti::Application.routes.draw do
   namespace :creator do 
     resources :dashboards, :only => [:index]
     resources :management, :only => [:index, :show]
+    namespace :management do
+      resources :profiles, :only => [:show]
+    end
   end
   namespace :market do
     resources :stores, :only => [:index, :show]

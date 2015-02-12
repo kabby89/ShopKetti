@@ -10,7 +10,7 @@
 	WePay.set_endpoint("stage"); // stage or production
 
 	WePay.OAuth2.button_init(document.getElementById('start_oauth2'), {
-    	"user_id":"112894",
+    	"client_id":"112894",
      	"scope":["manage_accounts","collect_payments","view_user","send_money","preapprove_payments"],
     	"user_name":"<%= current_user.company_name %>",
     	"user_email":"<%= current_user.email %>",
