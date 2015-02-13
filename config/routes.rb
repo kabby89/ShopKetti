@@ -1,8 +1,6 @@
 Shopketti::Application.routes.draw do
-  # get "order_items/create"
-  # get "order_items/update"
-  # get "order_items/destroy"
-  # get "carts/show" => "cart#show"
+  get "sessions/new"
+
   devise_for :users
   root 'static_home_page#index'
   resources :products 
@@ -26,6 +24,7 @@ Shopketti::Application.routes.draw do
   resources :registration_splitter, :only => [:index]
   resources :order_items, :only => [:create, :update, :destroy]
   resource :cart, :only => [:show]
+  match 'user/:action/(/:user_id)', :controller => 'creator/management/checkouts', via: :all
 
    devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
     get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup

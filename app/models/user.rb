@@ -8,16 +8,16 @@ class User < ActiveRecord::Base
 	
 	# returns a url
 	def wepay_authorization_url(redirect_uri)
-  		Wefarm::Application::WEPAY.oauth2_authorize_url(redirect_uri, self.email, self.name)
+  		Shopketti::Application::WEPAY.oauth2_authorize_url(redirect_uri, self.email, self.company_name)
 	end
 
 	# takes a code returned by wepay oauth2 authorization and makes an api call to generate oauth2 token for this farmer.
 	def request_wepay_access_token(code, redirect_uri)
-  		response = Wefarm::Application::WEPAY.oauth2_token(code, redirect_uri)
+  		response = Shopketti::Application::WEPAY.oauth2_token(code, redirect_uri)
   		if response['error']
     		raise "Error - "+ response['error_description']
   		elsif !response['access_token']
-    		raise "Error requesting access from WePay"
+    		raise "Error requesting access from Shop Ketti"
   		else
     		self.wepay_access_token = response['access_token']
     		self.save
@@ -33,17 +33,17 @@ class User < ActiveRecord::Base
   		if self.wepay_access_token.nil?
    	return false
   	end
-  		response = Wefarm::Application::WEPAY.call("/user", self.wepay_access_token)
+  		response = ShopKetti::Application::WEPAY.call("/user", self.wepay_access_token)
   		response && response["user_id"] ? true : false
 	end
 
 	# takes a code returned by wepay oauth2 authorization and makes an api call to generate oauth2 token for this farmer.
 	def request_wepay_access_token(code, redirect_uri)
-  		response = Wefarm::Application::WEPAY.oauth2_token(code, redirect_uri)
+  		response = ShopKetti::Application::WEPAY.oauth2_token(code, redirect_uri)
   		if response['error']
     		raise "Error - "+ response['error_description']
   		elsif !response['access_token']
-    		raise "Error requesting access from WePay"
+    		raise "Error requesting access from Shop Ketti"
   		else
     		self.wepay_access_token = response['access_token']
     		self.save
@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 	def create_wepay_account
   		if self.has_wepay_access_token? && !self.has_wepay_account?
     		params = { :name => self.company_name, :description => self.company_description }			
-    		response = Wefarm::Application::WEPAY.call("/account/create", self.wepay_access_token, params)
+    		response = ShopKetti::Application::WEPAY.call("/account/create", self.wepay_access_token, params)
 
     	if response["account_id"]
       	self.wepay_account_id = response["account_id"]

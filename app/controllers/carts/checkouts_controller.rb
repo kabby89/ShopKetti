@@ -1,6 +1,8 @@
 class Carts::CheckoutsController < ApplicationController
 	def index
-		# GET /farmers/oauth/1
+    @user = User.find(params[:id])
+    @is_admin = current_user && current_user.id == @user.id
+		# GET /users/oauth/1
 		def oauth
   			if !params[:code]
     			return redirect_to('/')
