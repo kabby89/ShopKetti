@@ -1,2 +1,14 @@
 <br /><br /><br />
-<h2>Order Management</h2>
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 booyah-box">
+	<h2>Order Management</h2>
+	<h4>Orders:</h4>
+	<% @orders.each do |order| %>
+		<div class="col-xs-12 booyah-box">
+			<div class="col-xs-12 col-sm-4">
+				<%= order.id %>
+			</div>
+			<%# @order_status.each do |status| %>
+			<%# end %>
+		</div>
+	<% end %>
+</div>

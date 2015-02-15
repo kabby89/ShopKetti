@@ -7,6 +7,8 @@ class OrderItem < ActiveRecord::Base
 	validate :order_present
 
 	before_save :finalize
+	# before_create :set_creator_id
+	before_create :set_retailer_id
 
 	def product
 		sku.product
@@ -42,5 +44,14 @@ class OrderItem < ActiveRecord::Base
 		self[:price_per_unit] = product.price
 		self[:total_price] = quantity * self[:price_per_unit]
 	end
+
+	def set_creator_id
+		@first_item = order.order_items.first
+    	@order.creator_id = @first_item.sku.product.user.id
+  	end
+
+  	def set_retailer_id
+  		@order.user_id = @user.id
+  	end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213225908) do
+ActiveRecord::Schema.define(version: 20150215225135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20150213225908) do
     t.integer  "order_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "creator_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 20150213225908) do
     t.string   "logo"
     t.string   "wepay_access_token"
     t.string   "wepay_account_id"
+    t.integer  "order_id"
   end
 
   add_index "users", ["buyer_ship_to_address_1", "buyer_ship_to_address_2", "buyer_ship_to_address_3", "buyer_ship_to_city", "buyer_ship_to_state", "buyer_ship_to_zip", "email", "buyer_sold_to_address_1", "buyer_sold_to_address_2", "buyer_sold_to_address_3", "buyer_sold_to_city", "buyer_sold_to_state", "buyer_sold_to_zip"], name: ":buyer_address_index", using: :btree
