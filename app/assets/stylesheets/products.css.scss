@@ -39,7 +39,7 @@ $raleway: 'Raleway', sans-serif;
 .caption {
 	position: absolute;
 	margin-top: 15%;
-	color: white;
+	color: #27A9E1;
 	background-color: rgba(0,0,0,0.7);
 	width: 100%;
 	left: 0;
@@ -106,4 +106,8 @@ $raleway: 'Raleway', sans-serif;
 	height: 300px;
 	margin: 0;
 	padding: 5px;
+}
+
+.home-email-signup {
+	background-color: #27A9E1;
 }

@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 	end
 
 	def has_wepay_access_token?
-  		!self.wepay_access_token.nil?
+  	!self.wepay_access_token.nil?
 	end
 
 	# makes an api call to WePay to check if current access token for farmer is still valid
@@ -33,13 +33,13 @@ class User < ActiveRecord::Base
   		if self.wepay_access_token.nil?
    	return false
   	end
-  		response = ShopKetti::Application::WEPAY.call("/user", self.wepay_access_token)
+  		response = Shopketti::Application::WEPAY.call("/user", self.wepay_access_token)
   		response && response["user_id"] ? true : false
 	end
 
 	# takes a code returned by wepay oauth2 authorization and makes an api call to generate oauth2 token for this farmer.
 	def request_wepay_access_token(code, redirect_uri)
-  		response = ShopKetti::Application::WEPAY.oauth2_token(code, redirect_uri)
+  		response = Shopketti::Application::WEPAY.oauth2_token(code, redirect_uri)
   		if response['error']
     		raise "Error - "+ response['error_description']
   		elsif !response['access_token']
@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
 	def create_wepay_account
   		if self.has_wepay_access_token? && !self.has_wepay_account?
     		params = { :name => self.company_name, :description => self.company_description }			
-    		response = ShopKetti::Application::WEPAY.call("/account/create", self.wepay_access_token, params)
+    		response = Shopketti::Application::WEPAY.call("/account/create", self.wepay_access_token, params)
 
     	if response["account_id"]
       	self.wepay_account_id = response["account_id"]
@@ -73,5 +73,32 @@ class User < ActiveRecord::Base
 
   	end		
   	raise "Error - cannot create WePay account"
-end
+  end
+
+  # creates a checkout object using WePay API for this farmer
+  def create_checkout(order, redirect_uri)
+    # calculate app_fee as 10% of produce price
+    app_fee = order.total * 0.08
+
+    params = {
+      :account_id => self.wepay_account_id,
+      :short_description => "Products purchased on ShopKetti",
+      :type => :GOODS,
+      :amount => order.total,      
+      :app_fee => app_fee,
+      :fee_payer => :payee,     
+      :mode => :iframe,
+      :redirect_uri => redirect_uri
+
+    }
+    response = Shopketti::Application::WEPAY.call('/checkout/create', self.wepay_access_token, params)
+
+    if !response
+      raise "Error - no response from WePay"
+    elsif response['error']
+      raise "Error - " + response["error_description"]
+    end
+
+    return response
+  end
 end

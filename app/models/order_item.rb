@@ -6,7 +6,6 @@ class OrderItem < ActiveRecord::Base
 	validate :sku_present
 	validate :order_present
 
-
 	before_save :finalize
 
 	def product

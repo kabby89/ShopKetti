@@ -1,14 +1,14 @@
 <br /><br /><br />
 <div class="col-xs-12 col-sm-offset-1 col-sm-10 booyah-box">
 	<h1>Creator Profile</h1>
-	<%# if (@is_admin && (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?)) %>
+	<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
   		<p>
     		<b>Please create an account to manage your money: </b>
-			<% redirect_uri = url_for(:controller => 'checkouts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
+			<% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
     		<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Click here to create your account</a>
   		</p>
-	<%# end %>
-	<%# if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
-		<!-- <p>Your WePay account is linked to our account</p> -->
-	<%# end %>
+	<% end %>
+	<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
+		<p>Your WePay account is linked to our account</p>
+	<% end %>
 </div>

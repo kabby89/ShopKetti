@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212114622) do
+ActiveRecord::Schema.define(version: 20150213225908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(version: 20150212114622) do
     t.string   "company_name"
     t.text     "company_description"
     t.string   "logo"
+    t.string   "wepay_access_token"
+    t.string   "wepay_account_id"
   end
 
   add_index "users", ["buyer_ship_to_address_1", "buyer_ship_to_address_2", "buyer_ship_to_address_3", "buyer_ship_to_city", "buyer_ship_to_state", "buyer_ship_to_zip", "email", "buyer_sold_to_address_1", "buyer_sold_to_address_2", "buyer_sold_to_address_3", "buyer_sold_to_city", "buyer_sold_to_state", "buyer_sold_to_zip"], name: ":buyer_address_index", using: :btree
