@@ -44,6 +44,9 @@ class CartsController < ApplicationController
       if (params['error'] && params['error_description'])
         return redirect_to @user, alert: "Error - #{params['error_description']}"
       end
-      redirect_to root_url, notice: "<br /><br /><br />Thanks for the payment! You should receive a confirmation email shortly."
+      redirect_to root_url, notice: "Thanks for the payment! You should receive a confirmation email shortly."
+      current_order.order_items.each do |item|
+        item.destroy
+      end
 	end
 end
