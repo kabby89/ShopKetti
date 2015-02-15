@@ -1,2 +1,0 @@
-module Carts::CheckoutsHelper
-end
