@@ -48,5 +48,6 @@ class CartsController < ApplicationController
       current_order.order_items.each do |item|
         item.destroy
       end
+      
 	end
 end

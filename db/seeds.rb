@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+OrderStatus.find_or_create_by_name("Order Placed")
+OrderStatus.find_or_create_by_name("Order Shipped")
+OrderStatus.find_or_create_by_name("Order Received")
