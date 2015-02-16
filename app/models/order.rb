@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
 	before_create :set_order_status
 	before_save :update_subtotal
 	belongs_to :user
+	before_create :set_creator_id
 
 	def subtotal
 		order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.price_per_unit) : 0}.sum
@@ -22,4 +23,7 @@ class Order < ActiveRecord::Base
 		self[:subtotal] = subtotal
 	end
 
+	def set_creator_id
+	current_order.creator_id = current_order.order_items.first.sku.product.user.id
+	end
 end

@@ -4,7 +4,6 @@ class OrderItemsController < ApplicationController
     # @user = current_user
     @order = current_order
     @order.user = current_user
-    @order.creator_id = @order.order_items.first.sku.product.user.id
     @order.save
     session[:order_id] = @order.id
     order_item_params[:order_items].each do |oi|
