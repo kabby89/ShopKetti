@@ -14,21 +14,9 @@ class OrderStatus < ActiveRecord::Base
 
 	class << self
 		ORDERSATUSES.each do |status|
-			define_method status.downcase.gsub(" ", "_").gsub("-", "_") do
-				OrderStatus.where(:status => orderstatus).first
+			define_method name.to_s.downcase.gsub(" ", "_").gsub("-", "_") do
+				OrderStatus.where(:status => name).first
 			end
 		end
-	end
-
-	def status_path
-		if self.name == "Order Placed"
-			:order_placed_path
-		elsif self.name == "Order Shipped"
-			:order_shipped_path
-		elsif self.name == "Order Received"
-			:order_received_path
-		else
-			nil
-		end		
 	end
 end

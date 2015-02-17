@@ -43,4 +43,5 @@ class OrderItem < ActiveRecord::Base
 		self[:total_price] = quantity * self[:price_per_unit]
 	end
 
+
 end

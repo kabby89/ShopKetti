@@ -38,6 +38,10 @@ class CartsController < ApplicationController
 
    # GET /users/payment_success/1
    def payment_success
+      @order = current_order
+      @sku = @order.order_items.first.sku.product.user
+      @order.creator_id = @sku.id
+      @order.save
       @user = current_user
       if !params[:checkout_id]
         return redirect_to @user, alert: "Error - Checkout ID is expected"

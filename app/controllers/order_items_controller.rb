@@ -1,7 +1,6 @@
 class OrderItemsController < ApplicationController
   before_filter :authenticate_user!
   def create
-    # @user = current_user
     @order = current_order
     @order.user = current_user
     @order.save
@@ -28,7 +27,7 @@ class OrderItemsController < ApplicationController
 
 private
   def order_item_params
-    params.require(:cart).permit(:id, :user_id, :creator_id, order_items: [:quantity, :sku_id])
+    params.require(:cart).permit(:id, order_items: [:quantity, :sku_id])
   end
 
 end
