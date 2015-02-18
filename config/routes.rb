@@ -19,6 +19,10 @@ Shopketti::Application.routes.draw do
     end
   end
 
+  namespace :retailer do
+    resources :dashboards, :only => [:index]
+  end
+
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
   resources :order_items, :only => [:create, :update, :destroy]

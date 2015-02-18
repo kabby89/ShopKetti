@@ -1,0 +1,2 @@
+module Retailer::ManagementsHelper
+end
