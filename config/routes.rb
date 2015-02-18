@@ -3,6 +3,7 @@ Shopketti::Application.routes.draw do
   devise_for :users
   root 'static_home_page#index'
   resources :products 
+
   namespace :creator do 
     resources :dashboards, :only => [:index]
     resources :management, :only => [:index, :show]

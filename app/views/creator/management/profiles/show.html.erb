@@ -11,4 +11,6 @@
 	<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
 		<p>Your WePay account is linked to our account</p>
 	<% end %>
+	<%= @user.id %> <br />
+	<%= @user.email %>
 </div>

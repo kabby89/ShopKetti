@@ -3,12 +3,17 @@
 	<h2>Order Management</h2>
 	<h4>Orders:</h4>
 	<% @orders.each do |order| %>
-		<div class="col-xs-12 booyah-box">
-			<div class="col-xs-12 col-sm-4">
-				<%= order.id %>
+		<% if order.creator_id == current_user.id %>
+			<div class="col-xs-12 booyah-box">
+				<div class="col-xs-12 col-sm-4">
+					<%= order.id %>
+				</div>
+				<div class="col-xs-12 col-sm-4">
+					<% order.order_items.each do |item| %>
+						<%= item.sku_id %>
+					<% end %>
+				</div>
 			</div>
-			<%# @order_status.each do |status| %>
-			<%# end %>
-		</div>
+		<% end %>
 	<% end %>
 </div>
