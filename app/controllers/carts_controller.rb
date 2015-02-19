@@ -29,7 +29,6 @@ class CartsController < ApplicationController
    # GET /users/buy/1
    def buy
       redirect_uri = url_for(:controller => 'carts', :action => 'payment_success', :user_id => params[:user_id], :host => request.host_with_port)
-      # this should be the seller user not current user
       @user = current_order.order_items.first.sku.product.user
       begin
         @checkout = @user.create_checkout(current_order, redirect_uri)
@@ -41,6 +40,7 @@ class CartsController < ApplicationController
       @order = current_order
       @sku = @order.order_items.first.sku.product.user
       @order.creator_id = @sku.id
+      @order.order_status_id = OrderStatus.order_placed.id
       @order.save
       @user = current_user
       if !params[:checkout_id]
@@ -50,9 +50,6 @@ class CartsController < ApplicationController
         return redirect_to @user, alert: "Error - #{params['error_description']}"
       end
       redirect_to root_url, notice: "Thanks for the payment! You should receive a confirmation email shortly."
-      current_order.order_items.each do |item|
-        item.destroy
-      end
-      
+      clear_current_order
 	end
 end

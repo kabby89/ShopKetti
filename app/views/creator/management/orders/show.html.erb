@@ -9,9 +9,7 @@
 					<%= order.id %>
 				</div>
 				<div class="col-xs-12 col-sm-4">
-					<% order.order_items.each do |item| %>
-						<%= item.sku_id %>
-					<% end %>
+					<%= order.order_items.inspect %>
 				</div>
 			</div>
 		<% end %>

@@ -14,8 +14,8 @@ class OrderStatus < ActiveRecord::Base
 
 	class << self
 		ORDERSATUSES.each do |status|
-			define_method name.to_s.downcase.gsub(" ", "_").gsub("-", "_") do
-				OrderStatus.where(:status => name).first
+			define_method status.to_s.downcase.gsub(" ", "_").gsub("-", "_") do
+				OrderStatus.where(:name => status).first
 			end
 		end
 	end
