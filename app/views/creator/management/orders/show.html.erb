@@ -5,11 +5,23 @@
 	<% @orders.each do |order| %>
 		<% if order.creator_id == current_user.id %>
 			<div class="col-xs-12 booyah-box">
-				<div class="col-xs-12 col-sm-4">
+				<div class="col-xs-12 col-sm-1">
 					<%= order.id %>
 				</div>
 				<div class="col-xs-12 col-sm-4">
-					<%= order.order_items.inspect %>
+					<% order.order_items.each do |item| %>
+						<%= item.sku.product.name %><br />
+						<% item.sku.product.colors.each do |color| %>
+							<%= color.hue %>
+							<% item.sku.product.sizes.each do |size| %>
+								<%= size.measurement %>
+							<% end %>
+						<% end %><br />
+						
+					<% end %>
+				</div>
+				<div class="col-sm-1 pull-right">
+					<%= link_to 'Return a product', creator_management_my_returns_path %>
 				</div>
 			</div>
 		<% end %>

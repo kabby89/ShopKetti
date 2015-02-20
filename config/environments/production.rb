@@ -78,4 +78,10 @@ Shopketti::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #WePay info
+  CLIENT_ID = 11849
+  CLIENT_SECRET = "7a6237462f"
+  USE_STAGE = true
+  WEPAY = WePay.new(CLIENT_ID, CLIENT_SECRET, USE_STAGE)
 end
