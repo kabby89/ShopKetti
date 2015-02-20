@@ -24,7 +24,7 @@ class CartsController < ApplicationController
   		# else	
    		redirect_to root_url, notice: 'We successfully connected you to WePay!'
   		# end
-   end
+  end
 
    # GET /users/buy/1
    def buy

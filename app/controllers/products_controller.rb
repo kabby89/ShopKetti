@@ -28,9 +28,9 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-    @product.update(product_params)
-    respond_with(@product)
-  end
+    	@product.update(product_params)
+    	respond_with(@product)
+  	end
 
 	private
 

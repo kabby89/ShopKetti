@@ -10,7 +10,7 @@ Shopketti::Application.routes.draw do
     namespace :management do
       resources :profiles, :only => [:show]
       resources :orders, :only => [:show]
-      resources :my_returns, :only => [:index, :show, :create, :update, :destroy]
+      resources :my_returns, :only => [:index, :create]
     end
   end
   namespace :market do
