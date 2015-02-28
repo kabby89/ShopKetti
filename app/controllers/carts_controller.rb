@@ -5,26 +5,6 @@ class CartsController < ApplicationController
   	@user = current_user
     @is_admin = current_user && current_user.id == @user.id
   end
-	
-	# GET /users/oauth/1
-	def oauth
-  		if !params[:code]
-    		return redirect_to('/')
-  		end
-      @user = User.find(params[:user_id])
-      redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port)
-  		# begin
-    		@user.request_wepay_access_token(params[:code], redirect_uri)
-  		# rescue Exception => e
-  		#	error = e.message
- 			# end
-
-	  	# if error
-  		#	redirect_to @user, alert: error
-  		# else	
-   		redirect_to root_url, notice: 'We successfully connected you to WePay!'
-  		# end
-  end
 
    # GET /users/buy/1
    def buy

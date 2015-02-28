@@ -1,0 +1,11 @@
+<br /><br /><br />
+<div class="col-xs-offset-1 col-xs-10 booyah-box">
+	<div class="text-center">
+		<h3>One more step in the registration process!</h3>
+		<p>Shop Ketti uses WePay to process our payments. WePay is a class leading payment processor that maintains the highest standards of privacy and security. </p>
+  <p>
+	<% redirect_uri = url_for(:controller => 'wepays', :action => 'oauth', :user_id => current_user.id, :host => request.host_with_port) %>
+    <a class="btn btn-primary" href="<%= current_user.wepay_authorization_url(redirect_uri) %>">Click here to create your WePay account</a>
+  </p>
+	</div>
+</div> 

@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
 
 	# makes an api call to WePay to check if current access token for farmer is still valid
 	def has_valid_wepay_access_token?
-  		if self.wepay_access_token.nil?
-   	return false
+  	if self.wepay_access_token.nil?
+   	  return false
   	end
   		response = Shopketti::Application::WEPAY.call("/user", self.wepay_access_token)
   		response && response["user_id"] ? true : false
@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
 
     }
     response = Shopketti::Application::WEPAY.call('/checkout/create', self.wepay_access_token, params)
-
+    raise response.inspect
     if !response
       raise "Error - no response from WePay"
     elsif response['error']

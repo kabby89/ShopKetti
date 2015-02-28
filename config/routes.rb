@@ -19,6 +19,10 @@ Shopketti::Application.routes.draw do
       resources :products, :only => [:index, :show]
     end
   end
+  
+  # This is to redirect after sign up to the WePay registration
+  resources :wepays, :only => [:index]
+  match 'wepays/:action/(/:user_id)', :controller => 'wepays', via: :all
 
   namespace :retailer do
     resources :dashboards, :only => [:index]
@@ -33,7 +37,7 @@ Shopketti::Application.routes.draw do
   get 'users' => 'devise/users'
 
 
-   devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
+  devise_for :buyers, :class_name => 'User', :controllers => {:registrations => "buyer/registrations", :sessions => 'main' } do
     get   "buyer/registration/sign_up" => "buyer/registrations#new", :as => :buyer_signup
     get   "private_customer/sign_in" => "main#index", :as => :private_customer_signin
   end
