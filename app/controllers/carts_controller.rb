@@ -20,7 +20,7 @@ class CartsController < ApplicationController
       @order = current_order
       @sku = @order.order_items.first.sku.product.user
       @order.creator_id = @sku.id
-      @order.order_status_id = OrderStatus.order_placed.id
+      @order.order_status_id = OrderStatus.order_placed
       @order.save
       @user = current_user
       if !params[:checkout_id]

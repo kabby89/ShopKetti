@@ -93,7 +93,6 @@ class User < ActiveRecord::Base
 
     }
     response = Shopketti::Application::WEPAY.call('/checkout/create', self.wepay_access_token, params)
-    raise response.inspect
     if !response
       raise "Error - no response from WePay"
     elsif response['error']

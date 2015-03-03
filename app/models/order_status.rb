@@ -1,5 +1,5 @@
 class OrderStatus < ActiveRecord::Base
-	has_many :orders
+	has_and_belongs_to_many :orders
 
 	def self.find_or_create_by_or_name(name)
 		orderstatus = OrderStatus.where(:name => name)
@@ -10,7 +10,7 @@ class OrderStatus < ActiveRecord::Base
 		orderstatus
 	end
 
-	ORDERSATUSES = ['Order Placed', 'Order Shipped', 'Order Received']
+	ORDERSATUSES = ['Order Placed', 'Order Shipped', 'Order Received', 'Order Partially Returned', 'Order Fully Returned']
 
 	class << self
 		ORDERSATUSES.each do |status|

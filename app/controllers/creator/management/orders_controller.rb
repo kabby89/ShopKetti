@@ -3,4 +3,8 @@ class Creator::Management::OrdersController < ApplicationController
 	def show
 		@orders = ::Order.all
 	end
+
+	def index
+		@orders = ::Order.all
+	end
 end
