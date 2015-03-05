@@ -10,7 +10,6 @@
 							<%= image_tag picture.image.thumb %>	
 						<% end %>
 					<% end %>
-					<%# image_tag @first_product %>
 				</div>
 				<div class="col-xs-12 col-sm-2">
 					<%= link_to product_path(product) do %>
@@ -18,16 +17,20 @@
 					<% end %>
 				</div>
 				<div class="col-xs-12 col-sm-2">
-					<strong>Colors:</strong>
+					<strong>Colors:</strong><br />
 					<% product.colors.each do |color| %>
-						<%= color.hue %>
+						<%= color.hue %><br />
 					<% end %>
 				</div>
 				<div class="col-xs-12 col-sm-2">
-					<strong>Sizes:</strong>
+					<strong>Sizes:</strong><br />
 					<% product.sizes.each do |size| %>
-						<%= size.measurement %>
+						<%= size.measurement %><br />
 					<% end %>
+				</div>
+				<div class="col-xs-12 col-sm-2">
+					Price: <%= number_to_currency(product.price) %><br />
+					Shipping: <%= number_to_currency(product.shipping_cost) %>
 				</div>
 			</p>
 		</div>

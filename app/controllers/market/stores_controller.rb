@@ -1,5 +1,6 @@
 class Market::StoresController < ApplicationController
 	before_action  :authenticate_user!
+	helper_method :current_store
 
 	def index
 		@users = User.all
@@ -10,7 +11,6 @@ class Market::StoresController < ApplicationController
 	end
 
 	private
-	helper_method :current_store
 	def current_store
 		@current_store ||= User.find(params[:id])
 	end

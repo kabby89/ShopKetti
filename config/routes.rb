@@ -15,6 +15,7 @@ Shopketti::Application.routes.draw do
   end
   namespace :market do
     resources :stores, :only => [:index, :show]
+    resources :products, :only => [:index]
     namespace :stores do
       resources :products, :only => [:index, :show]
     end
@@ -26,6 +27,9 @@ Shopketti::Application.routes.draw do
 
   namespace :retailer do
     resources :dashboards, :only => [:index]
+    namespace :managements do
+      resources :orders, :only => [:index]
+    end
   end
 
   resources :static_home_page, :only => [:index]

@@ -3,7 +3,7 @@
 	<h2>Order Management</h2>
 	<h4>Orders:</h4>
 	<% @orders.each do |order| %>
-		<% if order.creator_id == current_user.id %>
+		<% if order.user_id == current_user.id %>
 			<div class="col-xs-12 booyah-box">
 				<div class="col-xs-1">
 					<%= order.id %>
@@ -14,25 +14,23 @@
 						<% item.sku.product.colors.each do |color| %>
 							<b><%= color.hue %></b><br />
 							<% item.sku.product.sizes.each do |size| %>
-								<%= size.measurement %>
-								<%= item.quantity %>
-								<%= number_to_currency(item.quantity * item.price_per_unit) %><br/>
-							<% end %>
+								<%= size.measurement %>:
+								<%= item.quantity %> units 
+								<%= number_to_currency(item.price_per_unit * item.quantity) %><br />
+							<% end %><br />
 						<% end %><br />
 					<% end %>
 				</div>
 				<div class="col-xs-3">
 					Order Status: <%= order.order_status_id %><br />
 					Ordered: <%= order.created_at %><br /><br />
-					Retailer: <%= order.user.company_name %><br />
-					Retailer Email: <%= order.user.email %>
+					Creator: <%= order.user.company_name %>
+					Creator Email: <%= order.user.email %>
 				</div>
 				<div class="col-xs-2 pull-right">
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
 					Shipping: <%= number_to_currency(order.shipping) %><br />
-					Total: <%= number_to_currency(order.total) %><br /><br />
-					<%= link_to 'Issue a full return', creator_management_my_returns_path, :class => 'btn btn-sm btn-primary' %>
-					<%= link_to 'Issue a partial return', '#', :class => 'btn btn-primary btn-sm' %>
+					Total: <%= number_to_currency(order.total) %><br />
 				</div>
 			</div>
 		<% end %>

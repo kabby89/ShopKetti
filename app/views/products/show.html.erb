@@ -1,45 +1,45 @@
 <br /><br /><br />
 <p id="notice"><%= notice %></p>
 <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-	<p>
-  		<strong>Name:</strong>
-  		<%= @product.name %>
-	</p>
-	<p>
-		<strong>Images:</strong><br />
-		<div class="col-xs-12">
-			<% @product.product_images.each do |image| %>
-				<div class="col-xs-6">
-					<%= image_tag image.image_url(:large) %>
-				</div>
-			<% end %>
-		</div>
-	</p>	
+	
+  	<strong>Name:</strong>
+  	<%= @product.name %><br /><br />
 
-	<p>
+	<strong>Images:</strong><br />
+	<div class="col-xs-12">
+		<% @product.product_images.each do |image| %>
+			<div class="col-xs-6">
+				<%= image_tag image.image_url(:large) %>
+			</div>
+		<% end %>
+	</div><br /><br />
+
+	<div class="col-xs-12">
   		<strong>Description:</strong>
-  		<%= @product.description %>
-	</p>
+  		<%= @product.description %><br /><br />
+  	</div>
 
-	<p>
-		<strong>Colors:</strong>
+  	<div class="col-sm-6">
+		<strong>Colors:</strong><br />
 		<% @product.colors.each do |color| %>
-			<%= color.hue %>
-		<% end %>
-	</p>
+			<%= color.hue %><br />
+		<% end %><br /><br />
+	</div>
 
-	<p>
-		<strong>Sizes:</strong>
+	<div class="col-sm-6">
+		<strong>Sizes:</strong><br />
 		<% @product.sizes.each do |size| %>
-			<%= size.measurement %>
+			<%= size.measurement %><br />
 		<% end %>
-	</p>
+	</div>
+	<div class="clear"></div>
+	<div class="col-xs-12">
+		<b>Price:</b><%= number_to_currency(@product.price) %><br />
+		<b>Shipping:</b><%= number_to_currency(@product.shipping_cost) %><br /><br />
+	</div>
 
-	<p>
-		<strong>Price:</strong>
-		$<%= @product.price %>
-	</p>
-
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', product_path %>
+	<div class="col-xs-12">
+		<%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-primary' %> 
+		<%= link_to 'Back', product_path, :class => 'btn btn-primary' %>
+	</div>
+</div>
