@@ -22,6 +22,7 @@
 					<% end %>
 				</div>
 				<div class="col-xs-3">
+					<%= link_to 'Update Order', edit_creator_management_order_path(order), :class => 'btn btn-primary' %><br />
 					Order Status: <%= order.order_status_id %><br />
 					Ordered: <%= order.created_at %><br /><br />
 					Retailer: <%= order.user.company_name %><br />

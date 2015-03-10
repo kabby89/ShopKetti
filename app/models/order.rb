@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
 	private
 	
 	def set_order_status
-		self.order_status_id = OrderStatus.name
+		self.order_status_id = "Order Placed"
 	end
 
 	def update_subtotal

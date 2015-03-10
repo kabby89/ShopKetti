@@ -1,0 +1,19 @@
+<br /><br /><br />
+<div class="col-sm-offset-1 col-sm-10">
+	<div class="col-xs-12 booyah-box">
+		<b>Order:</b> <%= @order.id %><br /><br />
+		<% if @order.order_shipped.nil? %>
+			<%= simple_form_for(:order) do |f| %>
+				<div class="form-inputs">
+					<b>Tracking Info:</b><br /><br />
+					<%= f.input :order_sh_date, as: :date, start_year: Date.today.year - 90, label: 'When did you ship the order?' %><br />
+					<%= f.input :ship_type, as: :string, hint: 'Fedex, USPS or UPS', label: 'How did you ship this order?' %><br />
+					<%= f.input :tracking, as: :string, label: 'What is the tracking number?' %> 
+					<% f.input :order_shipped, value: true %>
+				</div>
+			<% end %>
+		<% else %>
+
+		<% end %>
+	</div>
+</div>
