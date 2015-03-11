@@ -8,21 +8,30 @@ class Creator::Management::OrdersController < ApplicationController
 		@orders = ::Order.all
 	end
 
+	def new
+		@order = ::Order.find(params[:id])
+	end
+
 	def edit
 		@order = ::Order.find(params[:id])
-		@orders = edit_current_order.update(order_params)
+	end
+
+	def create
+		@order = edit_current_order.create(order_params)
 	end
 
 	def update
-		
+		@order = ::Order.find(params[:id])
+		@order.update_attributes(order_params)
+		redirect_to creator_management_orders_path
+	end
+
+	def edit_current_order
+		edit_current_order = @order
 	end
 
 	private
 	def order_params
 		params.permit(:order_shipped, :order_sh_date, :ship_type, :tracking, :eta, :returned, :return_date)
-	end
-
-	def edit_current_order
-		edit_current_order = @order
 	end
 end

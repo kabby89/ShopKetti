@@ -26,7 +26,8 @@
 					Order Status: <%= order.order_status_id %><br />
 					Ordered: <%= order.created_at %><br /><br />
 					Retailer: <%= order.user.company_name %><br />
-					Retailer Email: <%= order.user.email %>
+					Retailer Email: <%= order.user.email %><br />
+					Order Shipped on: <%= order.order_sh_date %>
 				</div>
 				<div class="col-xs-2 pull-right">
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
