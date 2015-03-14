@@ -9,6 +9,11 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :product_images, :reject_if => :all_blank ,:allow_destroy => :true
 	accepts_nested_attributes_for :skus
 	before_create :generate_skus!
+	validates :name, :presence => true
+	validates :description, :presence => true
+	validates :style_number, :presence => true
+	validates :shipping_cost, :presence => true
+	validates :price, :presence => true
 
 	def generate_skus!
 		colors.each do |color|

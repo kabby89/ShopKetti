@@ -1,12 +1,17 @@
 <%= simple_form_for(@product) do |f| %>
-	<%= f.error_notification %>
-	
+	<%= f.error_notification %><br /><br />
+	<% if flash[:error].present? %>
+      <div class="col-xs-12 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+    <% end %>
+    	
 	<div class="form-inputs">
-		<%= f.input :name %>
-		<%= f.input :description %>
-		<%= f.input :style_number %>
-		<%= f.input :price %>
-		<%= f.input :shipping_cost %><br />
+		<%= f.input :name, required: true %>
+		<%= f.input :description, required: true %>
+		<%= f.input :style_number, required: true %>
+		<%= f.input :price, required: true %>
+		<%= f.input :shipping_cost, required: true %><br />
 		<p><strong>Product Images</strong></p>
 		<%= f.simple_fields_for :product_images do |image| %>
 			<%= render 'product_image_fields', :f => image %>

@@ -15,6 +15,9 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = current_user.products.create(product_params)
+		if @product.invalid?
+			flash[:error] = '<strong>Could not save</strong> the data you entered is invalid.'
+		end
 		respond_with(@product)
 	end
 
