@@ -10,11 +10,11 @@ class Order < ActiveRecord::Base
 	end
 
 	def shipping
-		order_items.shipping_cost
+		order_items.collect { |oi| oi.valid? ? (oi.shipping_cost) :0}.sum
 	end
 
 	def total
-		return subtotal
+		return subtotal + shipping
 	end
 
 	private
