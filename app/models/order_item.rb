@@ -20,8 +20,12 @@ class OrderItem < ActiveRecord::Base
 		end
 	end
 
+	def shipping_cost
+		product.shipping_cost * quantity
+	end
+
 	def total_price
-		sku.product.price * quantity
+		sku.product.price * quantity + shipping_cost
 	end
 
 	private

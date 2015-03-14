@@ -18,6 +18,7 @@
 					</div>
 				</div>
 			</div>
+			<h5 class="text-right">Shipping:<span style="color: blue"><%= number_to_currency order_item.sku.product.shipping_cost %></span></h5>
 			<h4 class="text-right">Total Price: <span style="color: green"><%= number_to_currency order_item.total_price %></span></h4>
 			<% end %>
 		</div>
