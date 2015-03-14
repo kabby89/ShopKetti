@@ -29,6 +29,7 @@ Shopketti::Application.routes.draw do
     resources :dashboards, :only => [:index]
     namespace :managements do
       resources :orders, :only => [:index]
+      resources :profiles, :only => [:index]
     end
   end
 

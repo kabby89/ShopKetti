@@ -24,8 +24,13 @@
 				<div class="col-xs-3">
 					Order Status: <%= order.order_status_id %><br />
 					Ordered: <%= order.created_at %><br /><br />
-					Creator: <%= order.user.company_name %>
-					Creator Email: <%= order.user.email %>
+					Creator: <%= order.user.company_name %><br />
+					Creator Email: <%= order.user.email %><br />
+					<% if !order.order_sh_date.nil? %>
+						Order Shipped on: <%= order.order_sh_date %><br />
+						Shipped by: <%= order.ship_type %><br />
+						Tracking #: <%= order.tracking %><br />
+					<% end %>
 				</div>
 				<div class="col-xs-2 pull-right">
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
