@@ -22,7 +22,9 @@
 					<% end %>
 				</div>
 				<div class="col-xs-3">
+					<% if order.order_sh_date.nil? %>
 					<%= link_to 'Update Order', edit_creator_management_order_path(order), :class => 'btn btn-primary' %><br />
+					<% end %>
 					Order Status: <%= order.order_status_id %><br />
 					Ordered: <%= order.created_at.strftime(" %A %e %B %Y ") %><br /><br />
 					Retailer: <%= order.user.company_name %><br />

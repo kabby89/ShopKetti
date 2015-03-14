@@ -2,7 +2,6 @@
 <div class="col-sm-offset-1 col-sm-10">
 	<div class="col-xs-12 booyah-box">
 		<b>Order:</b> <%= @order.id %><br /><br />
-		<% if @order.order_shipped.nil? %>
 			<%= simple_form_for @order, :url => creator_management_order_path(@order), :method => :patch do |f| %>
 				<div class="form-inputs">
 					<b>Tracking Info:</b><br /><br />
@@ -13,8 +12,5 @@
 					<%= f.submit 'Update Order', :class => 'btn btn-primary' %>
 				</div>
 			<% end %>
-		<% else %>
-
-		<% end %>
 	</div>
 </div>
