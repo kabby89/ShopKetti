@@ -32,6 +32,6 @@ class Creator::Management::OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.permit(:order_shipped, :order_sh_date, :ship_type, :tracking, :eta, :returned, :return_date)
+		params.require(:order).permit(:order_shipped, :order_sh_date, :ship_type, :tracking, :eta, :returned, :return_date)
 	end
 end

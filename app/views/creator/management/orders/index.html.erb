@@ -24,10 +24,12 @@
 				<div class="col-xs-3">
 					<%= link_to 'Update Order', edit_creator_management_order_path(order), :class => 'btn btn-primary' %><br />
 					Order Status: <%= order.order_status_id %><br />
-					Ordered: <%= order.created_at %><br /><br />
+					Ordered: <%= order.created_at.strftime(" %A %e %B %Y ") %><br /><br />
 					Retailer: <%= order.user.company_name %><br />
 					Retailer Email: <%= order.user.email %><br />
-					Order Shipped on: <%= order.order_sh_date %>
+					Order Shipped on: <%= order.order_sh_date %><br />
+					Shipper: <%= order.ship_type %><br />
+					Tracking: <%= order.tracking %><br />
 				</div>
 				<div class="col-xs-2 pull-right">
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
