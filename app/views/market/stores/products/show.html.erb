@@ -33,7 +33,7 @@
 	</p>
 
 	<%= simple_form_for :cart, :url => order_items_path do |item| %>
-		Price: <%= number_to_currency @product.price %><br/><br />
+
 		<% @product.skus.each do |sku| %>
 			<%= item.simple_fields_for "order_items[]", OrderItem.new do |sku_fields| %>
 				<%= sku.color.hue %>

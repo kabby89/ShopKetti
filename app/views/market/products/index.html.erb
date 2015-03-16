@@ -13,13 +13,18 @@
 			<div class="booyah-box market-box col-xs-12 col-sm-3">
 				<% item.product_images.each do |picture| %>
 					<% if picture.featured == true %>
-						<%= image_tag picture.image.thumb %>	
+						<div class="text-center">
+							<%= image_tag picture.image.thumb %>	
+						</div>
 					<% end %>
 				<% end %>
 				<div class="text-center">
+				<%= link_to market_stores_product_path(item) do %>
 					<b><%= item.name %></b><br />
-					<%= number_to_currency(item.price) %><br />
-					Sold by: <%# item.user.company_name %><br />
+				<% end %>
+					<%= number_to_currency item.price %><br />
+					<%= truncate(item.description , :length => 30) %><br />
+					Sold by: <%= item.user %><br />
 				</div>
 			</div>
 		<% end %>

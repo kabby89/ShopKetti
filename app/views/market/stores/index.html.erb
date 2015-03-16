@@ -12,11 +12,13 @@
 		<% @users.each do |store| %>
 			<div class="booyah-box market-box col-xs-12 col-sm-2">
 				<% if store.user_type == 'creator' %>
-					<%= link_to market_store_path(store) do %>
-						<%= image_tag store.logo %><br />	
-						<%= store.company_name %><br />
-						<%= store.email %><br />
-					<% end %>
+					<div class="text-center">
+						<%= link_to market_store_path(store) do %>
+							<%= image_tag store.logo %><br />	
+							<%= store.company_name %><br />
+							<%= store.email %><br />
+						<% end %>
+					</div>
 				<% end %>
 			</div>
 		<% end %>
