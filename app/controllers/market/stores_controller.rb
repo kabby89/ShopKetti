@@ -8,6 +8,9 @@ class Market::StoresController < ApplicationController
 
 	def show
 		@products = current_store.products.all
+		if current_user.user_type != "retailer" && current_store != current_user
+			redirect_to root_path, :alert => 'Sorry, you are not allowed access to that store', :class => 'alert-heading'
+		end
 	end
 
 	private
