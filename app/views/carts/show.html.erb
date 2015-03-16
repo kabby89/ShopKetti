@@ -7,16 +7,13 @@
 		<div class="col-xs-1">
 			<h4>Qty</h4>
 		</div>
-		<div class="col-xs-3 text-right">
-			<h4>Total Price per Unit</h4>
-		</div>
 	</div>
 </div>
 
 <div class="shopping cart col-xs-12 col-sm-offset-2 col-sm-8">
 	<%= render "shopping_cart" %>
 
-	<h4>Buy from ShopKetti's Creators for <%= number_to_currency(current_order.subtotal, :unit => "$") %>
+	<h4>Buy from ShopKetti's Creators for <%= number_to_currency(current_order.total, :unit => "$") %>
 		<div class="pull-right">
 			<%= link_to "Order", "/carts/buy/#{current_order.id}", :class => 'btn btn-danger btn-large', :id => 'buy-now-button' %>
 		</div>

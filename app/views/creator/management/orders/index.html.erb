@@ -37,8 +37,6 @@
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
 					Shipping: <%= number_to_currency(order.shipping) %><br />
 					Total: <%= number_to_currency(order.total) %><br /><br />
-					<%= link_to 'Issue a full return', creator_management_my_returns_path, :class => 'btn btn-sm btn-primary' %>
-					<%= link_to 'Issue a partial return', '#', :class => 'btn btn-primary btn-sm' %>
 				</div>
 			</div>
 		<% end %>

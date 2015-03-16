@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    has_many :products
    has_many :orders
+   validates :company_name, :presence => true
+   validates :company_description, :presence => true
+
 	
 	# returns a url
 	def wepay_authorization_url(redirect_uri)

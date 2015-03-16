@@ -1,6 +1,6 @@
 class Creator::ManagementsController < ApplicationController
 	def show
-		@products = Product.all
+		@products = current_user.products.all
 	end
 
 	def index

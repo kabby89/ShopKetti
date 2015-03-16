@@ -6,8 +6,13 @@
 	<br />
 	<% @products.each do |product| %>
 		<div class="col-xs-3 booyah-box">
+			<% product.product_images.each do |picture| %>
+					<% if picture.featured == true %>
+						<%= image_tag picture.image.thumb %>	
+					<% end %>
+				<% end %>
 			<%= link_to market_stores_product_path(product) do %>
-			<h4><%= product.name %></h4>
+				<h4><%= product.name %></h4>
 			<% end %>
 			<p><strong>Colors:</strong>
 				<% product.colors.each do |color| %>
