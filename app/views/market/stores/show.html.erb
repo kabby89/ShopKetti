@@ -21,15 +21,9 @@
 					<%= color.hue %>
 				<% end %>
 			</p>
-			<p><strong>Sizes:</strong>
-				<% product.sizes.each do |size| %>
-					<%= size.measurement %>
-				<% end %>
-			</p> 
-			<p><%= product.description %></p>
-			<p>Style #:<%= product.style_number %></p>
-			<p>Price $<%= product.price %></p>
-			<p>Shipping Cost: $<%= product.shipping_cost %></p>
+			<p><b>Style #:</b><%= product.style_number %></p>
+			<p><b>Price</b><%= number_to_currency product.price %></p>
+			<%= link_to 'Buy', market_stores_product_path(product),  :class => 'btn btn-primary btn-sm pull-right' %>
 		</div>
 	<% end %>
 </div>
