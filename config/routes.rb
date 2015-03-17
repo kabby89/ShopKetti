@@ -8,7 +8,7 @@ Shopketti::Application.routes.draw do
     resources :dashboards, :only => [:index]
     resource :management, :only => [:show]
     namespace :management do
-      resources :profiles, :only => [:show]
+      resources :profiles, :only => [:show, :edit, :update]
       resources :orders
       resources :my_returns, :only => [:index, :create]
     end

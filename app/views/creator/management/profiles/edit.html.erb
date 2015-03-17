@@ -1,0 +1,7 @@
+<div class="col-sm-offset-1 col-sm-10 booyah-box">
+	<%= simple_form_for @user, :url => edit_creator_management_profile_path, :method => :patch do |f| %>
+		<div class="form-inputs">
+			<%= f.input :email %>
+		</div>
+	<% end %>
+</div>
