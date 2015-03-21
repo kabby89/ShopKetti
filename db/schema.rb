@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307133849) do
+ActiveRecord::Schema.define(version: 20150320004302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "checkouts", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "colors", force: true do |t|
     t.integer  "product_id"
@@ -98,6 +93,7 @@ ActiveRecord::Schema.define(version: 20150307133849) do
     t.integer  "user_id"
     t.integer  "sku_id"
     t.decimal  "price"
+    t.boolean  "active"
   end
 
   add_index "products", ["name", "user_id", "style_number"], name: "index_products_on_name_and_user_id_and_style_number", using: :btree

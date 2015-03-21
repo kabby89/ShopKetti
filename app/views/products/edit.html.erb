@@ -1,8 +1,13 @@
-<div class="col-xs-12 col-sm-offset-1 col-sm-10">
+<div class="col-xs-12 col-sm-offset-1 col-sm-10 booyah-box">
 
 	<h1>Edit Product</h1>
 
-	<%= render 'form' %>
-
-	<%= link_to 'Back', products_path %>
+	<%= simple_form_for @product,:url => product_path(@product), :method => :patch do |f| %>
+		<div class="form-inputs">
+			<%= f.input :name, required: true %>
+			<%= f.input :description, required: true %>
+			<%= f.input :style_number, required: true %>
+			<%= f.submit "Edit Product", :class => 'btn btn-primary' %>
+		</div>
+	<% end %>
 </div>

@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = current_user.products.create(product_params)
+		@product.active = true
 		if @product.invalid?
 			flash[:error] = '<strong>Could not save</strong> the data you entered is invalid.'
 		end
@@ -31,7 +32,8 @@ class ProductsController < ApplicationController
 	end
 
 	def update
-    	@product.update(product_params)
+		@product = current_product
+    	@product.update_attributes(product_params)
     	respond_with(@product)
   	end
 
@@ -42,6 +44,6 @@ class ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name, :description, :price, :style_number, :date_available, :image, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy], product_images_attributes: [:id, :image, :featured, :done, :_destroy], sku_attributes: [:id, :price_per_unit, :date_available, :done, :_destroy])
+		params.require(:product).permit(:name, :description, :price, :active, :style_number, :date_available, :image, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy], product_images_attributes: [:id, :image, :featured, :done, :_destroy], sku_attributes: [:id, :price_per_unit, :date_available, :done, :_destroy])
 	end
 end

@@ -1,4 +1,4 @@
-class AddActiveStatusToProducts < ActiveRecord::Migration
+class AddActiveColumnToProducts < ActiveRecord::Migration
   def change
   	add_column :products, :active, :boolean
   end

@@ -5,6 +5,5 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
-    	add_index :products, [:name, :user_id, :style_number]
   end
 end

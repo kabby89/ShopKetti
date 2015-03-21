@@ -19,6 +19,6 @@
 		<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
 			<p>Your WePay account is linked to our account</p>
 		<% end %>
-		<%= link_to 'Edit Profile', edit_creator_management_profile_path, :class => 'btn btn-primary' %>
+		<%= link_to 'Edit Profile', edit_user_registration_path, :class => 'btn btn-primary' %>
 	</div>
 </div>
