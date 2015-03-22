@@ -26,47 +26,44 @@ $raleway: 'Raleway', sans-serif;
 }
 
 .navbar .nav > li > a:hover {
-	color: #27A9E1;
+	color: #29AAE2;
 }
 
 .home-body-bg-1 {
-	min-height: 100%;
+	max-height: 400px;
 	width: 100%;
-	background-color: #27A9E1;
 }
-
 
 .caption {
-	position: absolute;
 	margin-top: 15%;
-	color: #27A9E1;
-	background-color: rgba(0,0,0,0.7);
-	width: 100%;
-	left: 0;
-	padding: 25px;
-	text-align: center;
-	font-family: $raleway;
-}
-
-.home-body-bg-2 {
-	max-height: 550px;
-	width: 100%;
-	background-color: #27A9E1;
-
-}
-
-.caption-us {
-	position: absolute;
-	margin-top: 5%;
 	color: white;
-	background-color: rgba(0,0,0,0.7);
+	background-color: #29AAE2;
 	width: 100%;
-	left: 0;
-	padding: 25px;
-	text-align: center;
+	font-family: $raleway;
+	padding-top: 25px;
+	padding-bottom: 100px;
+}
+
+.caption-overlay {
+	color: white;
+	font-family: $raleway;
+	border: 1px solid white;
+	margin-top: -300px;
+	background-color:rgba(0,0,0,0.5);
+	padding: 10px 5px 10px 5px;
+}
+
+.caption-white {
+	color: #29AAE2;
+	padding: 35px 5px 50px 5px;
 	font-family: $raleway;
 }
 
+.blue-bar {
+	background: #29AAE2;
+	width: 100%;
+	height: 100px;
+}
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -75,29 +72,6 @@ $raleway: 'Raleway', sans-serif;
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
   padding: 10px;
-}
-
-.home-body-bg-3 {
-	max-height: 550px;
-	width: 100%;
-}
-
-.ketti-flow{
-	background-color: rgba(0,0,0,0.7);
-	width: 100%;
-	position: absolute;
-	padding-bottom: 5%;
-	font-family: $raleway;
-
-}
-.ketti-flow h2 {
-	color: #27A9E1;
-	text-align: center;
-}
-
-.ketti-flow h3{
-	color: #27A9E1;
-	text-align: center;
 }
 
 .marketplace-product {
@@ -109,31 +83,14 @@ $raleway: 'Raleway', sans-serif;
 }
 
 .home-email-signup {
-	background-color: #27A9E1;
-}
-
-.solid-home-bg {
-	background-color: #27A9E1;
-	width: 100%;
-	height: 500px;
-}
-
-.solid-home-text {
-	font-family: $raleway;
-	color: white;
-
-}
-
-.home-box {
-  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  box-shadow: 1px 1px 2px 0 #d0d0d0;
-  border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-  padding: 10px;
+	background-color: #29AAE2;
 }
 
 body {
 	padding-top: 100px;
 }
 
+.home-solid-blue{
+	background: #29AAE2;
+	margin-top: -100px;
+}
