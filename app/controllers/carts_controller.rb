@@ -6,8 +6,9 @@ class CartsController < ApplicationController
     @is_admin = current_user && current_user.id == @user.id
   end
 
-   # GET /users/buy/1
    def buy
+    @order = current_order
+    @order_items = current_order.order_items
       redirect_uri = url_for(:controller => 'carts', :action => 'payment_success', :user_id => params[:user_id], :host => request.host_with_port)
       @user = current_order.order_items.first.sku.product.user
       begin
@@ -15,12 +16,10 @@ class CartsController < ApplicationController
       end
    end
 
-   # GET /users/payment_success/1
    def payment_success
       @order = current_order
-      @sku = @order.order_items.first.sku.product.user
-      @order.creator_id = @sku.id
-      # @order.order_status_id = OrderStatus['order_placed']
+      @creator = @order.order_items.first.sku.product.user
+      @order.creator_id = @creator.id
       @order.save
       @user = current_user
       if !params[:checkout_id]
