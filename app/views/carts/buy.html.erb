@@ -6,7 +6,5 @@
 		<script type="text/javascript">
 			WePay.iframe_checkout("wepay-iframe-div", "<%= @checkout['checkout_uri'] %>");
 		</script>
-		<br /><%= @order_items.first.sku.product.user.inspect %>
-		<br /><%= @order.inspect %>
 	</div>
 </div>

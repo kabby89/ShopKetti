@@ -18,8 +18,8 @@ class CartsController < ApplicationController
 
    def payment_success
       @order = current_order
-      @creator = @order.order_items.first.sku.product.user
-      @order.creator_id = @creator.id
+      # @creator = @order.order_items.first.sku.product.user.id
+      @order.creator_id = @order.order_items.first.sku.product.user.id
       @order.save
       @user = current_user
       if !params[:checkout_id]
