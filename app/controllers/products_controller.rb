@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
 
 	def edit
 		@product = current_product
+		#this is where the inventory update logic needs to go
 	end
 
 	def update

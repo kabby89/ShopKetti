@@ -12,6 +12,7 @@
 		<%= f.input :style_number, required: true %>
 		<%= f.input :price, required: true %>
 		<%= f.input :shipping_cost, required: true %><br />
+		<%= f.input :date_available, required: true, :label => 'First date product available for purchase:', :as  => :date %><br />
 		<%= f.hidden_field :active, :value => true %>
 		<p><strong>Product Images</strong></p>
 		<%= f.simple_fields_for :product_images do |image| %>

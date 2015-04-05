@@ -4,9 +4,6 @@ class Order < ActiveRecord::Base
 	before_save :set_order_status
 	before_save :update_subtotal
 	belongs_to :user
-	# validates :order_sh_date, on: :update, presence: true
-	# validates :ship_type, on: :update, presence: true
-	# validates :tracking, on: :update, presence: true
 
 	def subtotal
 		order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.price_per_unit) : 0}.sum
