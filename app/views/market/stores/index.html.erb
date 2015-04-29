@@ -9,8 +9,8 @@
 	</div>	
 	<div class="col-xs-12 col-sm-offset-1 col-sm-10">
 		<% @users.each do |store| %>
-			<div class="booyah-box market-box col-xs-12 col-sm-2">
-				<% if store.user_type == 'creator' %>
+			<% if store.user_type == 'creator' %>
+				<div class="booyah-box market-box col-xs-12 col-sm-2">
 					<div class="text-center">
 						<%= link_to market_store_path(store) do %>
 							<%= image_tag store.logo %><br />	
@@ -18,8 +18,8 @@
 							<%= store.email %><br />
 						<% end %>
 					</div>
-				<% end %>
-			</div>
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 </div>

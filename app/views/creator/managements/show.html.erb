@@ -15,7 +15,7 @@
 						<strong><%= product.name %></strong>
 					<% end %>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-2">
 					<strong>Color/Sizes</strong><br />
 					<% product.skus.each do |sku| %>
 						<%= sku.color.hue + " " + sku.size.measurement %>
@@ -30,6 +30,10 @@
 							<%# s.submit 'Update Quantities' %>
 						<%# end %>
 					<%# end %>
+				</div>
+				<div class="col-sm-2">
+					<strong>Date Available:</strong><br />
+					<%= product.date_available %>
 				</div>
 				<div class="col-sm-2">
 					Price: <%= number_to_currency(product.price) %><br />

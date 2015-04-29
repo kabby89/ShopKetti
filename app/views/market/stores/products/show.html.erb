@@ -17,6 +17,10 @@
 		<%= number_to_currency @product.shipping_cost %>
 	</p>
 	<p>
+		<strong>First Date Available: </strong>
+		<%= @product.date_available %>
+	</p>
+	<p>
 		<strong>Images:</strong><br />
 		<div class="col-xs-12">
 			<% @product.product_images.each do |image| %>

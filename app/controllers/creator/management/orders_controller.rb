@@ -3,6 +3,8 @@ class Creator::Management::OrdersController < ApplicationController
 
 	def show
 		@orders = ::Order.all
+		@order = Order.find(params[:id])
+		@user = @order.creator_id
 	end
 
 	def index

@@ -9,15 +9,11 @@
 				</div>
 				<div class="col-xs-6">
 					<% order.order_items.each do |item| %>
-						<b><u><%= item.sku.product.name %></u></b><br />
-						<% item.sku.product.colors.each do |color| %>
-							<b><%= color.hue %></b><br />
-							<% item.sku.product.sizes.each do |size| %>
-								<%= size.measurement %>
-								<%= item.quantity %>
-								<%= number_to_currency(item.quantity * item.price_per_unit) %><br/>
-							<% end %>
-						<% end %><br />
+						<strong><%= item.sku.product.name %></strong>
+						<%= item.sku.color.hue %>
+						<%= item.sku.size.measurement %>
+						<%= item.quantity %>
+						<%= number_to_currency(item.quantity * item.price_per_unit) %><br /><br />
 					<% end %>
 				</div>
 				<div class="col-xs-3">
@@ -36,6 +32,7 @@
 					Subtotal: <%= number_to_currency(order.subtotal) %><br />
 					Shipping: <%= number_to_currency(order.shipping) %><br />
 					Total: <%= number_to_currency(order.total) %><br /><br />
+					<%= link_to 'View Invoice', creator_management_order_path(order), :class => 'btn btn-primary' %>
 				</div>
 			</div>
 		<% end %>
