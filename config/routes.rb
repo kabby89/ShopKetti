@@ -33,6 +33,13 @@ Shopketti::Application.routes.draw do
     end
   end
 
+  
+  resources :admins, :only => [:index]
+  namespace :admin do
+    resources :users
+  end
+  
+  
   resources :static_home_page, :only => [:index]
   resources :registration_splitter, :only => [:index]
   resources :order_items, :only => [:create, :update, :destroy]

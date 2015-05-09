@@ -1,0 +1,57 @@
+<div class="col-sm-offset-1 col-sm-10">
+	<h1>Admin Dashboard</h1>
+	<div class="col-sm-12 booyah-box">
+		<h2>Product Upload</h2>
+		<% @creators.each do |company| %>
+			<%= company.company_name %>
+			<%= company.email %>
+			<%= company.id %>
+			<%= company %><br />
+		<% end %>
+		<%= simple_form_for @product do |f| %>
+			<%= f.error_notification %><br /><br />
+			<% if flash[:error].present? %>
+      			<div class="col-xs-12 alert alert-danger">
+        			<%= flash[:error].html_safe %>
+      			</div>
+    		<% end %>
+    	<div class="form-inputs">
+			<%= f.input :user_id, :collection => @creators, :label => "Creators" %>
+			<%= f.input :name, required: true %>
+			<%= f.input :description, required: true %>
+			<%= f.input :style_number, required: true %>
+			<%= f.input :price, required: true %>
+			<%= f.input :shipping_cost, required: true %><br />
+			<%= f.input :date_available, required: true, :label => 'First date product available for purchase:', :as  => :date %><br />
+			<%= f.hidden_field :active, :value => true %>
+			<p><strong>Product Images</strong></p>
+			<%= f.simple_fields_for :product_images do |image| %>
+				<%= render 'product_image_fields', :f => image %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Add Image', f, :product_images %>
+			</div>
+		</div>
+		<h2>Colors</h2>
+		<div id="colors">
+			<%= f.simple_fields_for :colors do |color| %>
+				<%= render 'color_fields', :f => color %>
+			<% end %>
+			<div class="links"> 
+				<%= link_to_add_association 'Add Color', f, :colors %>
+			</div>
+		</div>
+		<h2>Sizes</h2>
+		<div id="sizes">
+			<%= f.simple_fields_for :sizes do |size| %>
+				<%= render 'size_fields', :f => size %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Add Size', f, :sizes %>
+			</div>
+		</div>
+		<br />
+			<%= f.submit "Create Product", :class => 'btn btn-primary' %>
+		<% end %>
+	</div>
+</div>
