@@ -14,14 +14,15 @@ class ProductsController < ApplicationController
 		respond_with(@product)
 	end
 
-	def create
-		@product = current_user.products.create(product_params)
-		@product.active = true
-		
-		if current_user.user_type = "admin"
-			@creator = :creator_id
+	def create(product_params)
+		if current_user.user_type = "Admin"
+			@product = self.create(product_params)
+			@creator = :user_id
 			@product.user = @creator
+			@product.active = true
 		else
+			@product = current_user.products.create(product_params)
+			@product.active = true
 		end
 
 		if @product.invalid?
