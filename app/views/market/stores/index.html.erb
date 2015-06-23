@@ -1,25 +1,28 @@
-<div class="col-xs-12">
-	<div class="col-xs-12">
-		<div class="text-center">
-			<h1>Marketplace by Creator</h1>
-		</div>
-		<div class="pull-right">
-			<%= link_to 'View Marketplace by product', market_products_path %>
-		</div>
-	</div>	
-	<div class="col-xs-12 col-sm-offset-1 col-sm-10">
-		<% @users.each do |store| %>
-			<% if store.user_type == 'creator' %>
-				<div class="booyah-box market-box col-xs-12 col-sm-2">
-					<div class="text-center">
-						<%= link_to market_store_path(store) do %>
-							<%= image_tag store.logo %><br />	
-							<%= store.company_name %><br />
-							<%= store.email %><br />
-						<% end %>
-					</div>
-				</div>
-			<% end %>
-		<% end %>
+<section class="container">
+	<div class="notification-wrap">
+	<%= link_to 'View Marketplace by product', market_products_path %>
 	</div>
-</div>
+
+	<div class="signup-wrap product-wrap product-lists product-mgmt">
+    	<h2>MARKETPLACE BY PRODUCT</h2>
+        <div class="marketplace">
+
+        </div><!--marketplace ends-->
+        <div class="market-store">
+        	<ul>
+        		<% @users.each do |store| %>
+					<% if store.user_type == 'creator' %>
+            <li><div class="cols">
+                <div class="product-info">
+                	<%= link_to market_store_path(store) do %>
+                	<h2><%= image_tag store.logo %></h2>
+                    <h3><%= store.company_name %></h3>
+                    <% end %>
+                </div><!--product-info ends-->
+            </div><!--cols ends--></li>
+            	<% end %>
+            <% end %>
+            </ul>
+        </div><!--market-store ends-->
+    </div><!--signup-box ends-->
+</section>

@@ -1,20 +1,22 @@
-<div class="col-xs-12">
-	<h1 class="text-center">What type of account are you looking for?</h1>
-</div>
-<br /><br /><br />
-<div class="col-xs-12 col-sm-6">
-	<h2 class="text-center">Retailer</h2>
-	<br /><br />
-	<p>You are a small business looking to purchase amazing wholesale goods at amazing prices!</p>
-	<div class="text-center">
-		<%= link_to 'Retailer Registration', new_buyer_registration_path, :class => 'btn btn-primary' %>
-	</div>
-</div>
-<div class="col-xs-12 col-sm-6">
-	<h2 class="text-center">Creator</h2>
-	<br /><br />
-	<p>You are a small brand manufacturing awesome products looking for wholesale distribution. </p>
-	<div class="text-center">
-		<%= link_to 'Creator Registration', new_user_registration_path, :class => 'btn btn-primary' %>
-	</div>
-</div>
+<section class="container">
+	<div class="signup-wrap">
+    	<h2>SIGN UP</h2>
+        <h3>What type of business are you?</h3>
+    	<div class="row">
+        	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            	<%= link_to 'Retailer', new_buyer_registration_path, :class => 'btn btn-blue' %>
+                <p>You are a small business
+looking to research, find, and
+purchase amazing products at
+wholesale prices.</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            	<%= link_to 'Creator', new_user_registration_path, :class => 'btn btn-blue' %>
+                <p>You are a small brand,
+designer, or manufacturer
+looking to sell and manage
+your best products to retailers.</p>
+            </div>
+        </div>
+    </div><!--signup-wrap ends-->
+</section>

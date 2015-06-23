@@ -1,24 +1,44 @@
-<div class="col-sm-offset-1 col-sm-10 booyah-box">
-	<h1>Creator Profile</h1>
-	<div class="col-sm-3">
-		<%= image_tag @user.logo %>
-	</div>
-	<div class="col-sm-offset-1 col-sm-5">
-		<%= @user.company_name %>
-		<hr>
-		<%= @user.company_description %>
-		<hr>
+<section class="container">
 
-		<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
+	<div class="signup-wrap signup-box product-wrap product-mgmt">
+    	<h2>My Profile</h2>
+        <div class="profile-wrap">
+        	<div class="col-1">
+            	<div class="profile-img"><%= image_tag @user.logo %></div>
+                <div class="profile-info">
+                	<h2><%= @user.company_name %></h2>
+                    <div class="profile-desc">
+                    	<h3>Description</h3>
+                        <p><%= @user.company_description %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+            <div class="address">
+            	<h3>Address</h3>
+                <p>141 Waverly Pl,<br>
+New York, NY, 10014<br>
+Suite 1005</p>
+            </div>
+            <div class="map">
+            	<img src="images/map.jpg" alt="" class="img-responsive">
+            </div>
+            <ul>
+            <li>
+            	<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
   			<p>
     			<b>Please create an account to manage your money: </b>
 				<% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
-    			<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Click here to create your account</a>
+    			<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Add WePay</a>
   			</p>
 		<% end %>
 		<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
-			<p>Your WePay account is linked to our account</p>
+			<p>WePay Linked</p>
 		<% end %>
-		<%= link_to 'Edit Profile', edit_user_registration_path, :class => 'btn btn-primary' %>
-	</div>
-</div>
+            </li>
+            <li><%= link_to 'Edit', edit_user_registration_path, :class => 'btn btn-primary' %></li>
+            </ul>
+            </div>
+        </div><!--profile-wrap ends-->
+    </div><!--signup-box ends-->
+</section>

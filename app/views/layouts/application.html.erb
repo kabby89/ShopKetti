@@ -11,54 +11,61 @@
     <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
   <% end %>
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag 'application', media: "all" %>
+  <%= stylesheet_link_tag 'font-awesome.min.css' %>
+  <%= stylesheet_link_tag 'bootstrap.min.css' %>
+  <%= stylesheet_link_tag 'style.css' %>
+  <%= stylesheet_link_tag 'media-query.css' %>
 
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <meta name="google-site-verification" content="nbhfyDxnwrGT_oP9yrT-28GwqVBrKm1gUxonxDfLfzQ" />
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
+<div id="wrapper"><!-- body wrapper -->
+  <div class="navbar navbar-default" role="navigation"><!-- navbar -->
+    <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-   	<%= link_to root_path do %>
-   		<%= image_tag 'sk-logo-wht.png', :class => 'header-logo' %>
-   	<% end %>
-   	
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    	<ul class="nav navbar-nav">
-    	</ul>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? == true %>
-        <li><%= link_to 'Marketplace', market_stores_path %></li>
-        <li><%= link_to 'Add a Product', new_product_path %></li>
-        <li><%= link_to 'Creator Dashboard', creator_dashboards_path %></li>
-        <li><%= link_to 'Retailer Dashboard', retailer_dashboards_path %></li>
-        <li><%= render 'layouts/cart_text' %></li>
-        <% end %>
-        <% if user_signed_in? != true %>
-          <li><%# link_to 'How Shop Ketti Works', '#' %></li>
-          <li><%# link_to 'About', '#' %></li>  
-        	<li><%= link_to 'Login', new_user_session_path %></li>
-        	<li><%= link_to 'Register', registration_splitter_index_path %></li>
-        <% end %>
-        <% if user_signed_in? == true %>
-        	<li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-        <% end %>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      <div class="navbar-header">
+   	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <h1>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', :class => 'img-responsive' %>
+          <% end %>
+        </h1>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-collapse collapse">
+    	  <ul class="nav navbar-nav" role="navigation">
+          <% if user_signed_in? == true %>
+            <% if current_user.user_type == 'creator' %>
+              <li><%= link_to 'Add a Product', new_product_path %></li>
+              <li><%= link_to 'Creator Dashboard', creator_dashboards_path %></li>
+            <% else %>
+              <li><%= link_to 'Marketplace', market_stores_path %></li>
+              <li><%= link_to 'Retailer Dashboard', retailer_dashboards_path %></li>
+              <li><%= render 'layouts/cart_text' %></li>
+            <% end %>
+          <% end %>
+          <% if user_signed_in? != true %>
+            <li><%# link_to 'How Shop Ketti Works', '#' %></li>
+            <li><%# link_to 'About', '#' %></li>  
+        	  <li><%= link_to 'Login', new_user_session_path %></li>
+        	  <li><%= link_to 'Register', registration_splitter_index_path %></li>
+          <% end %>
+          <% if user_signed_in? == true %>
+        	  <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- container -->
+  </div><!-- navbar-default -->
 
 <% if notice.present? %>
 	<p class="alert alert=info"><%= notice %></p>
@@ -70,5 +77,25 @@
 
 <%= yield %>
 
+</div><!-- wrappend end -->
+
+<footer>
+  <div class="container">
+      <!-- <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">FAQ</a></li>
+        </ul>
+        <ul class="social">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul> -->
+    </div>
+</footer>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-filestyle.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

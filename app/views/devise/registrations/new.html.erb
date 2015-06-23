@@ -1,82 +1,86 @@
-<br /><br /><br />
-<div class="booyah-box col-xs-offset-2 col-xs-6">
-  <h2>Creator Registration</h2>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-
-    <div class="field">
-      <p><%= f.label :email %> -this will be used to log in</p>
-      <%= f.email_field :email, autofocus: true, size: 55, required: true %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+<section class="container">
+  <div class="signup-wrap signup-box">
+      <h2>Sign up <span>(For Creators)</span></h2>
+        <h3>Tell us about your company</h3>
+          <div class="form-group">
+              <%= f.text_field :company_name, size: 45, required: true, placeholder: 'Company Name' %>
+            </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                      <%= f.text_field :seller_telephone, required: true, placeholder: 'Phone' %>
+                    </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                      <input class="spacer" type="text" value="" placeholder="Website">
+                    </div>
+                </div>
+            </div>
+    </div><!--signup-box ends-->
+</section>
+<section class="bordered-block">
+  <div class="container">
+  <div class="signup-wrap signup-box">
+        <h3>Help us find your awesome products!</h3>
+          <div class="form-group">
+              <%= f.text_field :seller_address_1, required: true, placeholder: 'Address' %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :seller_address_2, placeholder: 'Address Continued' %>
+            </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                      <%= f.text_field :seller_city, required: true, placeholder: 'City' %>
+                    </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                      <%= f.text_field :seller_state, required: true, placeholder: 'State' %>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                      <%= f.text_field :seller_zipcode, required: true, placeholder: 'Zip Code' %>
+                    </div>
+                </div>
+            </div>
+    </div><!--signup-box ends-->
     </div>
-
-    <br />
-    <h3 class="text-center">Company Info</h3>
-    <hr />
-    
-    <div class="field">
-      <%= f.label "Company Name" %>
-      <%= f.text_field :company_name, size: 45, required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Company Logo" %>
-      <%= f.file_field :logo, required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Company Description" %><br />
-      <%= f.text_area :company_description, required: true, size: "60x7" %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Contact Phone" %>
-      <%= f.text_field :seller_telephone, required: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Company Address" %><br />
-      <%= f.text_field :seller_address_1, required: true, size: 55 %>
-    </div>
-
-    <div class="field">
-      <%= f.text_field :seller_address_2, size: 55 %>
-    </div>
-  
-    <div class="field">
-      <%= f.label "Company City" %><br />
-      <%= f.text_field :seller_city, required: true, size: 35 %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Company State" %><br />
-      <%= f.text_field :seller_state, required: true, size: 35 %>
-    </div>
-
-    <div class="field">
-      <%= f.label "Company Zipcode" %><br />
-      <%= f.text_field :seller_zipcode, required: true, size: 35 %>
-    </div>
-
-      <%= f.hidden_field :user_type, :value => :creator %>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @validatable %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-  <%= render "devise/shared/links" %>
-</div>
+</section>
+<section class="container">
+  <div class="signup-wrap signup-box">
+        <h3>Join our growing community</h3>
+          <div class="form-group">
+              <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Email' %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "off", placeholder: 'Create Your Passphrase' %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Your Passphrase' %>
+            </div>
+            <div class="form-group">
+              <%= f.text_area :company_description, required: true, size: "60x5", placeholder: 'Short Company Description' %>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <span class="upload-btn">
+                        <%= f.file_field :logo, required: true, placeholder: 'Upload Image' %>
+                        </span>
+                    </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <span class="file-info">Help our creators identify your brand!</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <div class="check-row">
+                <input type="checkbox" id="check">
+                <label for="check"><span>I agree to the Ketti, LLC <a href="#">Terms and Conditions</a></span></label>
+                </div>
+                <%= f.hidden_field :user_type, :value => :creator %> <!-- This is to set the user as a creator -->
+              <%= f.submit "Join ShopKetti" %>
+            </div>
+            
+    </div><!--signup-box ends-->
+</section>
+<% end %>

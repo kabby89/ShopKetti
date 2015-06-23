@@ -1,5 +1,6 @@
 <div class="nested-fields">
-	<%= f.input :measurement, required: true %>
+	<%= f.input :measurement, required: true, label: false, placeholder: 'Medium or One Size' %>
 	<%# f.input :done, :as => :boolean %>
 	<%= link_to_remove_association "remove size", f %>
 </div>
+<br />

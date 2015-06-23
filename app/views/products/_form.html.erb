@@ -1,45 +1,175 @@
 <%= simple_form_for(@product) do |f| %>
+<section class="container">
 	<%= f.error_notification %><br /><br />
 	<% if flash[:error].present? %>
       <div class="col-xs-12 alert alert-danger">
         <%= flash[:error].html_safe %>
       </div>
     <% end %>
-    	
-	<div class="form-inputs">
-		<%= f.input :name, required: true %>
-		<%= f.input :description, required: true %>
-		<%= f.input :style_number, required: true %>
-		<%= f.input :price, required: true %>
-		<%= f.input :shipping_cost, required: true %><br />
-		<%= f.input :date_available, required: true, :label => 'First date product available for purchase:', :as  => :date %><br />
-		<%= f.hidden_field :active, :value => true %>
-		<p><strong>Product Images</strong></p>
-		<%= f.simple_fields_for :product_images do |image| %>
-			<%= render 'product_image_fields', :f => image %>
-		<% end %>
-		<div class="links">
-			<%= link_to_add_association 'Add Image', f, :product_images %>
-		</div>
-	</div>
-	<h2>Colors</h2>
-	<div id="colors">
-		<%= f.simple_fields_for :colors do |color| %>
-			<%= render 'color_fields', :f => color %>
-		<% end %>
-		<div class="links"> 
-			<%= link_to_add_association 'Add Color', f, :colors %>
-		</div>
-	</div>
-	<h2>Sizes</h2>
-	<div id="sizes">
-		<%= f.simple_fields_for :sizes do |size| %>
-			<%= render 'size_fields', :f => size %>
-		<% end %>
-		<div class="links">
-			<%= link_to_add_association 'Add Size', f, :sizes %>
-		</div>
-	</div>
-	<br />
-	<%= f.submit "Create Product", :class => 'btn btn-primary' %>
+
+	<!-- <div class="notification-wrap">
+	<a href="#">Notifications</a>
+	</div> -->
+	<div class="signup-wrap signup-box product-wrap">
+    	<h2>ADD PRODUCT</span></h2>
+        	<div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<label>Product Name</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+            	<%= f.input :name, required: true, placeholder: 'Product Name', label: false %>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<label>Product #</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+            	<%= f.input :style_number, required: true, placeholder: 'Product Number', label: false %>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<label>Product Desctiption</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="form-group">
+            	<%= f.input :description, required: true, size: "60x5", label: false, placeholder: 'Product Description' %>
+            </div>
+            </div>
+            </div>
+            <!-- <div class="row">
+            	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            		<label>Categories</label>
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            		<div class="form-group">
+            			<select class="selectpicker">
+                		<option>Categories</option>
+                		<option>Categories1</option>
+                		<option>Categories2</option>
+                		</select>
+            			<div class="clearfix"></div>
+                		<a href="#" class="more"><i class="fa fa-plus"></i> More Categories</a>
+            		</div>
+            	</div>
+            </div> -->
+    </div><!--signup-box ends-->
+</section>
+<section class="bordered-block">
+	<div class="container">
+    	<div class="signup-wrap signup-box product-wrap">
+        	<div class="row">
+            	<!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 for-label">
+            		<label>Main Picture</label>
+                	<span class="upload-btn">
+                   		<input type="file" class="filestyle"  data-icon="false">
+                	</span>
+            	</div> -->
+            	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+            		<label>Pictures</label>
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                	<span class="upload-btn">
+                   		<%= f.simple_fields_for :product_images do |image| %>
+							<%= render 'product_image_fields', :f => image %>
+						<% end %>
+                	</span>
+                	<span class="bordered-input">
+                		<div class="links">
+							<%= link_to_add_association 'Add Image', f, :product_images %>
+						</div>
+                	</span>
+            	</div> 
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+            	<div id="sizes">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            			<label>Size</label>
+            			<%= f.simple_fields_for :sizes do |size| %>
+							<%= render 'size_fields', :f => size %>
+						<% end %>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                		<span class="bordered-input">
+                			<div class="links">
+                				<%= link_to_add_association 'Add Size', f, :sizes %><br />
+                			</div>
+                		</span>
+                    </div>
+                </div>
+			</div>
+            <div class="clearfix"></div>
+            	<div class="row">
+                	<div id="colors">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">          		
+                    	   <label>Colors</label>
+                            <%= f.simple_fields_for :colors do |color| %>
+							    <%= render 'color_fields', :f => color %>
+						    <% end %><br />
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                			<span class="bordered-input">
+                				<div class="links">
+									<%= link_to_add_association 'Add Color', f, :colors %>
+								</div>              
+                			</span>
+                		</div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- signup- wrap ends -->
+    </div><!-- container ends -->
+</section>
+<section class="container">
+	<div class="signup-wrap signup-box product-wrap padding">
+        <div class="">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<label>Price</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            	<div class="form-group">
+            		<%= f.input :price, required: true, placeholder: "$12.80", label: false %>
+            	</div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<label>Shipping Cost</label>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            	<div class="form-group">
+            		<%= f.input :shipping_cost, required: true, placeholder: 'Cost per item', label: false %>
+            	</div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="">
+        	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        		<label>Date Availabile</label>
+        	</div>
+        	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        		<div class="form-group">
+        			<%= f.input :date_available, required: true, :as  => :date, label: false %>
+        		</div>
+        	</div>
+        </div>
+        <div class="clearfix"></div>
+        <%= f.hidden_field :active, :value => true %> <!-- Needed to allow product to show up in marketplace -->
+        <div class="move-90">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<!-- <button class="btn-blue" type="button">Cancel</button> -->
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <%= f.submit "Create Product", :class => 'btn btn-blue' %>
+            </div>
+        </div>    
+    </div><!--signup-box ends-->
+</section>
 <% end %>

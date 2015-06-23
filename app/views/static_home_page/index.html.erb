@@ -1,41 +1,175 @@
-<div class="home-body">
-	<div class="col-sm-12 home-solid-blue">
-		<div class="col-sm-offset-1 col-sm-10">
-			<h1 class="caption" >ShopKetti is the first B2B platform for the pet products industry. Small creators upload products, small retailers place orders. Signing up is free!</h1>
+<section class="container">
+	<div class="banner">
+    	<h2>Welcome to Shop Ketti</h2>
+        <p>ShopKetti is the first business to business<br>
+		marketplace for the pet product industry.<br>
+		Welcome to the future of wholesale.</p>
+		<div class="button">
+			<%= link_to 'Sign Up Now', registration_splitter_index_path, :class => 'btn btn-blue' %><br />
+			<span>SIGNING UP IS FREE</span>
 		</div>
-	</div>
-	<div class="caption-overlay-bg">
-		<%= image_tag 'Store_Front.jpg', :class => 'img-responsive home-body-bg-1' %>
-		<div class="col-sm-offset-1 col-sm-10 caption-overlay">
-			<h2>Keep more of your money. Lose the distributors and sales reps. ShopKetti is a simple platform for the pet products industry. Creators upload products to our marketplace for free and retailers place orders. Welcome to the future of wholesale.</h2>
-		</div>
-	</div>
-	<div class="blue-bar">
-	</div>
-	<div class="col-sm-offset-1 col-sm-10">
-		<h1 class="caption-white">We believe that the smallest players are the greatest innovators, that's why we've dedicated our platform to you.</h1>
-	</div>
-
-	<div>
-		<!-- Begin MailChimp Signup Form -->
-		<link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-		<style type="text/css">
-			#mc_embed_signup{background:#27A9E1; clear:left; font:14px Helvetica,Arial,sans-serif;  width:600px;}
-		</style>
-		<div class="col-xs-12 text-center home-email-signup">
-			<div class="col-sm-offset-4" id="mc_embed_signup">
-				<form action="//shopketti.us8.list-manage.com/subscribe/post?u=ebb81b57829f635a08efcfabe&amp;id=410fa2ad7a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    			<div id="mc_embed_signup_scroll">
-	
-					<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-    				<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    				<div style="position: absolute; left: -5000px;"><input type="text" name="b_ebb81b57829f635a08efcfabe_410fa2ad7a" tabindex="-1" value=""></div>
-    				<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    			</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-
+		<h6>Or get in touch with us for a free demo, we’re here to help.</h6>
+    </div><!--banner ends-->
+</section>
+<section class="section1">    
+    <div class="container">
+    	<div class="row">
+        	<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            	<%= image_tag 'computer.png', :class => 'img-responsive' %>
+            </div>
+        	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            	<div class="blue-info">
+                	<h2>Creators</h2>
+                    <p>We’re here to streamline your 
+                    wholesale process. 
+                    </p>
+                    <p>Signing up with Shop Ketti lets you 
+                    create a virtual storefront thats easy 
+                    to maintain and reaches retailers 
+                    across the country. </p>
+                    <p>We make it easier to manage and 
+                    grow your sales while also buiding 
+                    those relationships that are crucial 
+                    for small businesses.</p>
+                </div><!--blue-info ends-->
+            </div>
+        </div>
+    </div>
+</section><!--section1 ends-->
+<section class="sell">
+	<div class="container">
+    	<h3>How to sell</h3>
+        <div class="row">
+        	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon1.png', :class => 'img-responsive' %>
+                        <p class="text-center">1. Upload</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Sign up & Upload</h4>
+                        <p>Once you’re in, its just 
+                        a matter of uploading 
+                        your products.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon2.png', :class => 'img-responsive' %>
+                        <p class="text-center">2. Receive P.O</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Recieve Orders</h4>
+                        <p>You'll be notified when 
+                        you recieve an order 
+                        from a Retailer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon3.png', :class => 'img-responsive' %>
+                        <p class="text-center">3. Ship</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Ship & Get Paid</h4>
+                        <p>Just upload the shipment details 
+                        to us and we’ll release your 
+                        payment when we've confirmed
+                        its arrival to the Retailer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--sell ends-->
+<section class="section1 section2">    
+    <div class="container">
+    	<div class="row">
+        	<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            	<div class="blue-info">
+                	<h2>Retailers</h2>
+                    <p>Your old B2B process is now
+simplified and streamlined
+through us.
+                    </p>
+                    <p>Shop Ketti gives you the power to
+browse, order, and track shipment
+right at your fingertips.</p>
+                    <p>Through us, product reviews,
+payment processing, shipment
+tracking and returns are only
+clicks away.</p>
+                </div><!--blue-info ends-->
+            </div>
+        	<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            	<%= image_tag 'ipad.png', :class => 'img-responsive' %>
+            </div>
+        </div>
+    </div>
+</section><!--section1 ends-->
+<section class="sell">
+	<div class="container">
+    	<h3>How to purchase</h3>
+        <div class="row">
+        	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon4.png', :class => 'img-responsive' %>
+                        <p class="text-center">1. Browse</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Discover & Browse</h4>
+                        <p>After signing up, exciting new
+products for your shelves
+are at your fingtertips in the
+Shop Ketti Marketplace.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon5.png', :class => 'img-responsive' %>
+                        <p class="text-center">2. Order</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Order</h4>
+                        <p>See a product you want on your
+shelf? Just order and check out.
+We will secure payment as the
+shipment is processed.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            	<div class="row">
+                	<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    	<%= image_tag 'icon6.png', :class => 'img-responsive' %>
+                        <p class="text-center">3. Receive</p>
+                    </div>
+                	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    	<h4>Recieve</h4>
+                        <p>The Creator’s shipment will be
+delivered to your door and we’ll
+release payment when receipt
+is confirmed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--sell ends-->
+<section class="container">
+	<div class="banner banner-last">
+    	<h3>Shop Ketti empowers small businesses by streamlining the wholesale process.</h3>
+        <h3>We love your passion, and we’re here to help.</h3>
+        <div class="button">
+        <%= link_to 'Sign Up Now', registration_splitter_index_path, :class => 'btn btn-blue' %>
+        </div>
+    </div><!--banner ends-->
+</section>
 

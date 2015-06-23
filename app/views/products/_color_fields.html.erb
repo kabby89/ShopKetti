@@ -1,5 +1,6 @@
 <div class="nested-fields">
-	<%= f.input :hue, required: true %>
+	<%= f.input :hue, required: true, label: false, placeholder: 'Blue' %>
 	<%# f.input :done, :as => :boolean %>
 	<%= link_to_remove_association "remove color", f %>
 </div>
+<br />

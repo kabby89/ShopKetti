@@ -1,26 +1,18 @@
-<div class="col-sm-offset-2 col-sm-8">
-	<div class="col-xs-12 col-sm-12 text-center">
-		<h1>Dashboard</h1>
+<section class="container">
+	<div class="notification-wrap">
+	<!-- <a href="#" class="notification">Notifications <span class="number">1</span></a> -->
 	</div>
-	<br /><br />
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2><%= link_to 'Product Management', creator_management_path %></h2>
-	</div>
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2><%= link_to 'Order Management', creator_management_orders_path %></h2>
-	</div>
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2>Returns</h2>
-		<p>coming soon</p>
-	</div>
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2><%= link_to 'My Profile', creator_management_profile_path(current_user) %></h2>
-	</div>
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2>My Ratings</h2>
-		<p>coming soon</p>
-	</div>
-	<div class="col-xs-12 col-sm-4 booyah-box dashboard-box text-center">
-		<h2><%= link_to 'My Storefront', market_store_path(current_user) %></h2>
-	</div>
-</div>
+	<div class="signup-wrap">
+    	<h2>Dashboard</h2>
+		<ul class="dashboard clearfix">
+        <li><%= link_to 'PRODUCT MANAGEMENT', creator_management_path %></li>
+        <li><%= link_to 'ORDER MANAGEMENT', creator_management_orders_path %></li>
+        <li><a href="#">RETURNS <br /><small>-coming soon-</small></a></li>
+        <li><%= link_to 'MY PROFILE', creator_management_profile_path(current_user) %></li>
+        <li>
+        	<a href="#">MY RATINGS<br /> <small>-coming soon-</small></a>
+        </li>
+        <li><%= link_to 'MY STOREFRONT', market_store_path(current_user) %></li>
+        </ul>
+    </div><!--signup-box ends-->
+</section>

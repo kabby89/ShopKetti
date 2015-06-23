@@ -1,50 +1,95 @@
-<p id="notice"><%= notice %></p>
-<div class="col-xs-12 col-sm-offset-1 col-sm-10">
-	<p>
-  		<strong>Name:</strong>
-  		<%= @product.name %>
-	</p>
-	<p>
-		<strong>Style #:</strong>
-		<%= @product.style_number %>
-	</p>
-	<p>
-		<strong>Price per unit</strong>
-		<%= number_to_currency @product.price %>
-	</p>
-	<p>
-		<strong>Shipping Cost per unit</strong>
-		<%= number_to_currency @product.shipping_cost %>
-	</p>
-	<p>
-		<strong>First Date Available: </strong>
-		<%= @product.date_available %>
-	</p>
-	<p>
-		<strong>Images:</strong><br />
-		<div class="col-xs-12">
-			<% @product.product_images.each do |image| %>
-				<div class="col-xs-6">
-					<%= image_tag image.image_url(:large) %>
-				</div>
-			<% end %>
-		</div>
-	</p>	
-	<p>
-  		<strong>Description:</strong>
-  		<%= @product.description %>
-	</p>
 
-	<%= simple_form_for :cart, :url => order_items_path do |item| %>
+	
+
+
+<section class="container">
+	<p id="notice"><%= notice %></p>
+
+	<div class="signup-wrap product-wrap product-mgmt product-lists">
+    	<h2>PRODUCT DESCRIPTION</h2>
+        <div class="product-description">
+        	<div class="description">
+            	<div class="product-image">
+                    <div class="col-lg">
+                    	<ul>
+                    		<% @product.product_images.each do |image| %>
+                    		<li>
+								<%= image_tag image.image_url(:large) %>
+							</li>
+							<% end %>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--description ends-->
+            <div class="product-text">
+                	<div class="title">
+                    	<h3>Description</h3>
+                        <!-- <ul>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li class="inactive"><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul> -->
+                    </div>
+                    <%= @product.description %>
+                </div>
+            <div class="product-form">
+            	<div class="form-control">
+                	<%= @product.name %>
+                </div>
+                <div class="form-control">
+                	Product #:<%= @product.style_number %>
+                </div>
+                <div class="form-control">
+                	Price: <%= number_to_currency(@product.price) %>
+                </div>
+                <div class="form-control">
+                	Shipping Cost:<%= number_to_currency(@product.shipping_cost) %>
+                </div>
+                <div class="form-control">
+                	<ul class="colors">
+                		<% @product.colors.each do |color| %>
+							<li><%= color.hue %></li>
+						<% end %>
+                    </ul>
+                    <ul class="size">
+                    	<% @product.sizes.each do |size| %>
+							<li><%= size.measurement %></li>
+						<% end %>
+                    </ul>
+                </div>
+            </div>
+        </div><!--product-description ends-->
+        <div class="product-bottom">
+        <h3>Ordering Details</h3>
+        <div class="clearfix"></div>
+        	<div class="table-responsive">
+        	<table class="table table-condensed">
+            	<thead>
+            		<%= simple_form_for :cart, :url => order_items_path do |item| %>
 
 		<% @product.skus.each do |sku| %>
+		<tr>
 			<%= item.simple_fields_for "order_items[]", OrderItem.new do |sku_fields| %>
+				<td>
 				<%= sku.color.hue %>
 				<%= sku.size.measurement %>
 				<%= sku_fields.number_field :quantity, class: "form-control; width: 50px" %>
 				<%= sku_fields.hidden_field :sku_id, value: sku.id %>
+				<% end %>
+				<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<%= item.submit "Add to Cart", class: "btn btn-blue pull-right" %>
+				</td>
 			<% end %>
-		<% end %><br />
-		<%= item.submit "Add to Cart", class: "btn btn-primary" %><br /><br />
-	<% end %>
-</div>
+		</tr>
+                </thead>
+            </table>
+            </div>
+        </div>
+    </div><!--signup-box ends-->
+</section>

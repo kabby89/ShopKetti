@@ -1,32 +1,48 @@
-<div class="col-sm-offset-1 col-sm-10 booyah-box">
-	<h1>Retailer Profile</h1>
-	<div class="col-sm-3">
-		<%= image_tag @user.logo %>
-	</div>
-	<div class="col-sm-offset-1 col-sm-5">
-		<%= @user.company_name %>
-		<hr>
-		<%= @user.company_description %>
-		<hr>
-		Ship to Address:<br />
-		<%= @user.buyer_ship_to_address_1 %><br />
-		<%= @user.buyer_ship_to_address_2 %><br />
-		<%= @user.buyer_ship_to_address_3 %><br />
-		<%= @user.buyer_ship_to_city %><br />
-		<%= @user.buyer_ship_to_state %><br />
-		<%= @user.buyer_ship_to_zip %><br />
-		<%= @user.buyer_phone %><br />
-
-		<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
-  			<p>
-    			<b>Please create an account to manage your money: </b>
-				<% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
-    			<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Click here to create your account</a>
-  			</p>
-		<% end %>
-		<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
-			<p>Your WePay account is linked to our account</p>
-		<% end %>
-		<%= link_to 'Edit Profile', '#', :class => 'btn btn-primary' %>
-	</div>
-</div>
+<section class="container">
+	<div class="signup-wrap signup-box product-wrap product-mgmt">
+    	<h2>My Profile</h2>
+        <div class="profile-wrap">
+        	<div class="col-1">
+            	<div class="profile-img"><%= image_tag @user.logo %>
+            	</div>
+                <div class="profile-info">
+                	<h2><%= @user.company_name %></h2>
+                    <div class="profile-desc">
+                    	<h3>Description</h3>
+                        <p><%= @user.company_description %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+            	<div class="address">
+					<h3>Ship to Address:</h3>
+					<p><%= @user.buyer_ship_to_address_1 %><br />
+					<%= @user.buyer_ship_to_address_2 %><br />
+					<%= @user.buyer_ship_to_address_3 %><br />
+					<%= @user.buyer_ship_to_city %><br />
+					<%= @user.buyer_ship_to_state %><br />
+					<%= @user.buyer_ship_to_zip %><br />
+					<%= @user.buyer_phone %></p>
+            	</div>
+            <!-- <div class="map">
+            	<img src="images/map.jpg" alt="" class="img-responsive">
+            </div> -->
+            	<div class="address">
+            		<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
+  						<p>
+    					<b>Please create an account to manage your money: </b>
+						<% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
+    					<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Click here to create your account</a>
+  						</p>
+					<% end %>
+					<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
+						<p>Your WePay account is linked to our account</p>
+					<% end %>
+            	</div>
+            	<ul>
+            		<li><%= link_to 'Edit Profile', '#', :class => 'btn btn-primary' %></li>
+            	</ul>
+            </div><!-- col-2 ends -->
+        </div><!--profile-wrap ends-->
+    </div><!--signup-box ends-->
+</section>

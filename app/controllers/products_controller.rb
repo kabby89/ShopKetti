@@ -14,16 +14,16 @@ class ProductsController < ApplicationController
 		respond_with(@product)
 	end
 
-	def create(product_params)
-		if current_user.user_type = "Admin"
-			@product = self.create(product_params)
-			@creator = :user_id
-			@product.user = @creator
-			@product.active = true
-		else
+	def create
+		#if current_user.user_type = "Admin"
+		#	@product = self.create(product_params)
+		#	@creator = :user_id
+		#	@product.user = @creator
+			# @product.active = true
+		#else
 			@product = current_user.products.create(product_params)
-			@product.active = true
-		end
+			# @product.active = true
+		# end
 
 		if @product.invalid?
 			flash[:error] = '<strong>Could not save</strong> the data you entered is invalid.'
@@ -59,6 +59,6 @@ class ProductsController < ApplicationController
 	end
 
 	def product_params
-		params.require(:product).permit(:name, :user_id, :description, :price, :active, :style_number, :date_available, :image, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy], product_images_attributes: [:id, :image, :featured, :done, :_destroy], sku_attributes: [:id, :price_per_unit, :date_available, :done, :_destroy])
+		params.require(:product).permit(:name, :description, :price, :active, :style_number, :date_available, :shipping_cost, :sku, colors_attributes: [:id, :hue, :done, :_destroy], sizes_attributes: [:id, :measurement, :done, :_destroy], product_images_attributes: [:id, :image, :featured, :done, :_destroy], sku_attributes: [:id, :price_per_unit, :date_available, :done, :_destroy])
 	end
 end

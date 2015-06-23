@@ -1,45 +1,118 @@
-<p id="notice"><%= notice %></p>
-<div class="col-xs-12 col-sm-offset-1 col-sm-10">
-	
-  	<strong>Name:</strong>
-  	<%= @product.name %><br /><br />
+<section class="container">
+	<p id="notice"><%= notice %></p>
 
-	<strong>Images:</strong><br />
-	<div class="col-xs-12">
-		<% @product.product_images.each do |image| %>
-			<div class="col-xs-6">
-				<%= image_tag image.image_url(:large) %>
-			</div>
-		<% end %>
-	</div><br /><br />
+	<div class="signup-wrap product-wrap product-mgmt product-lists">
+    	<h2>PRODUCT DESCRIPTION</h2>
+        <div class="product-description">
+        	<div class="description">
+            	<div class="product-image">
+                	<div class="col-lg">
+                    	<ul>
+                    		<% @product.product_images.each do |image| %>
+                    		<li>
+								<%= image_tag image.image_url(:large) %>
+							</li>
+							<% end %>
+                        </ul>
+                    </div>
+                </div>
+            </div><!--description ends-->
+            <div class="product-text">
+                	<div class="title">
+                    	<h3>Description</h3>
+                        <!-- <ul>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                        <li class="inactive"><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul> -->
+                    </div>
+                    <%= @product.description %>
+                </div>
+            <div class="product-form">
+            	<div class="form-control">
+                	<%= @product.name %>
+                </div>
+                <div class="form-control">
+                	<%= @product.user.company_name %>
+                </div>
+                <div class="form-control">
+                	<%= @product.style_number %>
+                </div>
+                <div class="form-control">
+                	<%= number_to_currency(@product.price) %>
+                </div>
+                <div class="form-control">
+                	<%= number_to_currency(@product.shipping_cost) %>
+                </div>
+                <div class="form-control">
+                	<ul class="colors">
+                		<% @product.colors.each do |color| %>
+							<li><%= color.hue %></li>
+						<% end %>
+                    </ul>
+                    <ul class="size">
+                    	<% @product.sizes.each do |size| %>
+							<li><%= size.measurement %></li>
+						<% end %>
+                    </ul>
+                </div>
+            </div>
+        </div><!--product-description ends-->
+        <div class="product-bottom">
+        <!-- <h3>Ordering Details</h3>
+        <div class="clearfix"></div>
+        	<div class="table-responsive">
+        	<table class="table table-condensed">
+            	<thead>
+                	<tr>
+                    <td>Color</td>
+                    <td>XS</td>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>L</td>
+                    <td>XL</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                    <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+            	<select class="selectpicker">
+                <option>Yellow Black</option>
+                <option>$100</option>
+                <option>$110</option>
+                </select>
+            	</td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td><input type="text" value=""></td>
+                <td></td>
+                <td></td>
+                <td><a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><input type="submit" value="Purchase"></td>
+                </tr>
+                </tbody>
+            </table>
+            </div> -->
+             <%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-blue pull-right' %> 
+        <%= link_to 'Back', product_path, :class => 'btn btn-blue pull-left' %>
+        </div>
+    </div><!--signup-box ends-->
+</section>
 
-	<div class="col-xs-12">
-  		<strong>Description:</strong>
-  		<%= @product.description %><br /><br />
-  	</div>
-
-  	<div class="col-sm-6">
-		<strong>Colors:</strong><br />
-		<% @product.colors.each do |color| %>
-			<%= color.hue %><br />
-		<% end %><br /><br />
-	</div>
-
-	<div class="col-sm-6">
-		<strong>Sizes:</strong><br />
-		<% @product.sizes.each do |size| %>
-			<%= size.measurement %><br />
-		<% end %>
-	</div>
-	<div class="clear"></div>
-	<div class="col-xs-12">
-		<b>Date Available:</b><%= @product.date_available %><br />
-		<b>Price:</b><%= number_to_currency(@product.price) %><br />
-		<b>Shipping:</b><%= number_to_currency(@product.shipping_cost) %><br /><br />
-	</div>
-
-	<div class="col-xs-12">
-		<%= link_to 'Edit', edit_product_path(@product), :class => 'btn btn-primary' %> 
-		<%= link_to 'Back', product_path, :class => 'btn btn-primary' %>
-	</div>
-</div>
