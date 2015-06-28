@@ -15,7 +15,7 @@
             <li><div class="cols">
                 <div class="product-info">
                 	<%= link_to market_store_path(store) do %>
-                	<h2><%= image_tag store.logo %></h2>
+                	<h2><%= image_tag store.logo_url(:small) %></h2>
                     <h3><%= store.company_name %></h3>
                     <% end %>
                 </div><!--product-info ends-->

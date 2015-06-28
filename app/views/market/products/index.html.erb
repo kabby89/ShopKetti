@@ -41,17 +41,17 @@
         		<% @products.each do |item| %>
             <li><div class="cols">
             	<div class="text-center">
+                    <%= link_to market_stores_product_path(item) do %>
             		<% item.product_images.each do |picture| %>
 					<% if picture.featured == true %>
-						<%= image_tag picture.image.thumb %>	
+						<%= image_tag picture.image_url(:small) %>	
 					<% end %>
 				<% end %>
 				</div>
                 <div class="product-info">
-                	<%= link_to market_stores_product_path(item) do %>
                 	<h2><%= item.name %></h2>
-                    <h3>By <%= item.user.company_name %></h3>
                     <% end %>
+                    <h3>By <%= item.user.company_name %></h3>
                     <h3><%= number_to_currency item.price %></h3>
                 </div><!--product-info ends-->
                 <!-- <div class="product-rating">

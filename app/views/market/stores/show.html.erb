@@ -5,14 +5,14 @@
 	<br />
 	<% @products.each do |product| %>
 		<div class="col-xs-3 booyah-box">
+			<%= link_to market_stores_product_path(product) do %>
 			<% product.product_images.each do |picture| %>
 					<% if picture.featured == true %>
 						<div class="text-center">
-							<%= image_tag picture.image.thumb %>	
+							<%= image_tag picture.image_url(:small) %>	
 						</div>
 					<% end %>
 				<% end %>
-			<%= link_to market_stores_product_path(product) do %>
 				<h4><%= product.name %></h4>
 			<% end %>
 			<p><strong>Colors:</strong>
@@ -22,7 +22,9 @@
 			</p>
 			<p><b>Style #:</b><%= product.style_number %></p>
 			<p><b>Price</b><%= number_to_currency product.price %></p>
+			<% if current_user.user_type == "retailer" %>
 			<%= link_to 'Buy', market_stores_product_path(product),  :class => 'btn btn-primary btn-sm pull-right' %>
+			<% end %>
 		</div>
 	<% end %>
 </div>

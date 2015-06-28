@@ -3,7 +3,10 @@
     	<h2>My Profile</h2>
         <div class="profile-wrap">
         	<div class="col-1">
-            	<div class="profile-img"><%= image_tag @user.logo %>
+            	<div class="profile-img">
+                    <% @user.logo do |picture| %>
+                        <%= image_tag picture.picture_url(:profile) %>
+                    <% end %>
             	</div>
                 <div class="profile-info">
                 	<h2><%= @user.company_name %></h2>
