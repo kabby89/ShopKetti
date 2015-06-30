@@ -8,15 +8,16 @@
             	<div class="product-image">
                 	<div class="col-lg">
                     	<ul>
-                    		<% @product.product_images.featured.each do |image| %>
-                    		<li>
-								<%= image_tag image.image_url(:product_large) %>
-							</li>
-							<% end %>
-                            <% @product.product.images.each do |views| %>
-                            <li>
-                                <%= image_tag view.view_url(:product_small)
-                            </li>
+                    		<% @product.product_images.each do |image| %>
+                    		    <% if image.featured == true %>
+                                    <li>
+								        <%= image_tag image.image_url(:product_large) %>
+							         </li>
+                                <% else %>
+                                    <li>
+                                        <%= image_tag image.image_url(:product_small) %>
+                                    </li>
+                                <% end %>
                             <% end %>
                         </ul>
                     </div>

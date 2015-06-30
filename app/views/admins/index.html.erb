@@ -1,13 +1,7 @@
-<div class="col-sm-offset-1 col-sm-10">
+<section class="container">
 	<h1>Admin Dashboard</h1>
 	<div class="col-sm-12 booyah-box">
 		<h2>Product Upload</h2>
-		<% @creators.each do |company| %>
-			<%= company.company_name %>
-			<%= company.email %>
-			<%= company.id %>
-			<%= company %><br />
-		<% end %>
 		<%= simple_form_for @product do |f| %>
 			<%= f.error_notification %><br /><br />
 			<% if flash[:error].present? %>
@@ -15,9 +9,8 @@
         			<%= flash[:error].html_safe %>
       			</div>
     		<% end %>
-    	<div class="form-inputs">
-			<%= f.input :user_id, :collection => @creators, :label => "Creators" %>
-			<%= f.input :name, required: true %>
+			<%= f.input :user_id, as: :radio_buttons, collection: @creators, label_method: :company_name, value_method: :id, label: "Creator id" %>
+			<%= f.input :name, required: true, label: "Product Name" %>
 			<%= f.input :description, required: true %>
 			<%= f.input :style_number, required: true %>
 			<%= f.input :price, required: true %>
@@ -25,16 +18,15 @@
 			<%= f.input :date_available, required: true, :label => 'First date product available for purchase:', :as  => :date %><br />
 			<%= f.hidden_field :active, :value => true %>
 			<p><strong>Product Images</strong></p>
-			<%= f.simple_fields_for :product_images do |image| %>
+			<% f.simple_fields_for :product_images do |image| %>
 				<%= render 'product_image_fields', :f => image %>
 			<% end %>
 			<div class="links">
 				<%= link_to_add_association 'Add Image', f, :product_images %>
 			</div>
-		</div>
 		<h2>Colors</h2>
 		<div id="colors">
-			<%= f.simple_fields_for :colors do |color| %>
+			<% f.simple_fields_for :colors do |color| %>
 				<%= render 'color_fields', :f => color %>
 			<% end %>
 			<div class="links"> 
@@ -54,4 +46,4 @@
 			<%= f.submit "Create Product", :class => 'btn btn-primary' %>
 		<% end %>
 	</div>
-</div>
+</section>
