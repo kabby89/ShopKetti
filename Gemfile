@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+group :production do 
+	#gem to help serve js files to heroku
+	gem 'rails_12factor'
+end
+
 # WePay
 gem 'wepay'
 
