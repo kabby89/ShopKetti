@@ -12,11 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-filestyle
-//= require bootstrap-select
-//= require bootstrap
-//= require main
-//= require wepays
+//= require_tree .
 //= require cocoon
 //= require bootstrap-sprockets
 
