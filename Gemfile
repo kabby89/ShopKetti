@@ -3,6 +3,9 @@ group :production do
 	gem 'rails_12factor'
 end
 
+# Bootstrap File style for Front end
+gem 'bootstrap-filestyle-rails'
+
 # WePay
 gem 'wepay'
 
