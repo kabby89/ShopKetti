@@ -1,50 +1,43 @@
 <section class="container">
-
-	<div class="signup-wrap signup-box product-wrap product-mgmt">
-    	<h2>My Profile</h2>
-        <div class="profile-wrap">
-        	<div class="col-1">
-            	<div class="profile-img">
+    	<h2 style="font-size: 39px; color: #25AAE1; font-family: 'Roboto Condensed', sans-serif; text-align: center;">My Profile</h2>
+        <div class="col-md-offset-3 col-md-6">
+        	<div class="col-md-4">
+            	<div style="border: 1px solid #25AAE1;">
                     <% @user.logo do |picture| %>
-                        <%= image_tag picture.picture_url(:profile) %>
+                        <%= image_tag picture.logo_url(:profile) %>
                     <% end %>
                 </div>
-                <div class="profile-info">
-                	<h2><%= @user.company_name %></h2>
-                    <div class="profile-desc">
-                    	<h3>Description</h3>
-                        <p><%= @user.company_description %></p>
+                <div>
+                	<h2 style="font-size: 19px; color: #58595B; text-align: left; margin-bottom: 5px; font-weight: 300;"><%= @user.company_name %></h2>
+                    <div style="border: 1px solid #231F20; padding: 2px;">
+                    	<p style="font-size: 14px; color: #231F20; text-align: left; font-weight: 300;">Description<br>
+                        <%= @user.company_description %></p>
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-            <div class="address">
-            	<h3>Address</h3>
-                <%= @user.seller_address_1 %>
-                <%= @user.seller_address_2 %>
-                <%= @user.seller_city %>
-                <%= @user.seller_state %>
-                <%= @user.seller_zipcode %>
-            </div>
-            <div class="map">
-            	<img src="images/map.jpg" alt="" class="img-responsive">
-            </div>
-            <ul>
-            <li>
+            <div class="col-md-offset-2 col-md-6">
+                <div style="border: 1px solid #25AAE1; padding: 2px; margin-bottom: 5px;">
+            	   <p style="font-size: 14px; text-align: left; color: #231F20; margin-bottom: 5px; font-weight: 300;"><u>Address</u><br>
+                    <%= @user.seller_address_1 %><br>
+                    <%= @user.seller_address_2 %><br>
+                    <%= @user.seller_city %>,
+                    <%= @user.seller_state %>
+                    <%= @user.seller_zipcode %></p>
+                </div>
+                <div style="border:1px solid #25AAE1; padding: 2px;">
             	<% if (!@user.has_valid_wepay_access_token? || !@user.has_wepay_account?) %>
-  			<p>
-    			<b>Please create an account to manage your money: </b>
-				<% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
-    			<a class="btn btn-primary" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Add WePay</a>
-  			</p>
-		<% end %>
-		<% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
-			<p>WePay Linked</p>
-		<% end %>
-            </li>
-            <li><%= link_to 'Edit', edit_user_registration_path, :class => 'btn btn-primary' %></li>
-            </ul>
+  			       <p style="font-size: 14px; color: #58595B; text-align: left; margin-bottom: 5px; font-weight: 300;">
+    			    <b>Please create an account to manage your money: </b>
+				    <% redirect_uri = url_for(:controller => '/carts', :action => 'oauth', :user_id => @user.id, :host => request.host_with_port) %>
+    			    <a class="btn btn-primary btn-sm" href="<%= @user.wepay_authorization_url(redirect_uri) %>">Add WePay</a>
+  			       </p>
+		          <% end %>
+		          <% if @user.has_valid_wepay_access_token? || @user.has_wepay_account? %>
+			         <p style="font-size: 14px; color: #58595B; text-align: left; margin-bottom: 5px; font-weight: 300;">Your WePay Account is Linked</p>
+		          <% end %>
+                
+                <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'btn btn-primary btn-xs' %>
+                </div>
             </div>
-        </div><!--profile-wrap ends-->
-    </div><!--signup-box ends-->
+        </div>
 </section>
