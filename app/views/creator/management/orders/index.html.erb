@@ -1,103 +1,87 @@
 <section class="container">
-	<div class="signup-wrap product-wrap product-mgmt product-lists">
-    	<h2>ORDER MANAGEMENT</h2>
-        <div class="order-mgmt">
+    	<h2 style="font-size: 39px; font-family: 'Roboto Condensed',sans-serif; color: #25AAE1; margin-bottom: 60px; text-align: center; text-transform: uppercase;">ORDER MANAGEMENT</h2>
         	<% @orders.each do |order| %>
 				<% if order.user_id == current_user.id %>
-					<h2>Order # <%= order.id %></h2>		
-		<div class="col-mgmt-left">
-            <div class="col-mgmt">
-                <div class="table-responsive">
-                <table class="table table-condensed">
-                	<tbody>
+					<h2  style="font-size: 20px; color: #A7A9AC; font-weight:300; text-transform: none; text-decoration: bold;">Order # <%= order.id %></h2>
                 		<% order.order_items.each do |item| %>
-						<tr><td><h2><%= item.sku.product.name %></h2></td>
-						</tr>
+                        <div class ='col-md-4' style="border: 1px solid #25AAE1; padding: 5px;">
+						<h2 style="font-size:15px; margin-bottom: 2px; padding-bottom: 2px; text-decoration: underline; font-weight: 300; color: #A7A9AC;"><%= item.sku.product.name %></h2>
 						<% item.sku.product.colors.each do |color| %>
-							<tr><td><%= color.hue %></td>
+							<table>
+                                <tbody style="font-family: 'Helvetica Neue', Helvetica, Arial, sans serif; font-size: 16px; color: #333;">
+                                    <tr><td style="padding: 2px 5px;"><%= color.hue %></td>
 							<% item.sku.product.sizes.each do |size| %>
-								<td><%= size.measurement %></td>
-								<td><%= item.quantity %> units </td>
-								<td><%= number_to_currency(item.price_per_unit * item.quantity) %></td></tr>
+								<td style="padding: 2px 5px;"><%= size.measurement %></td>
+								<td style="padding: 2px 5px;"><%= item.quantity %> units </td>
+								<td style="padding: 2px 5px;"><%= number_to_currency(item.price_per_unit * item.quantity) %></td></tr>
 							<% end %>
+                                </tbody>
+                            </table>
 						<% end %>
+                        </div>
 					<% end %>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
-            <div class="col-mgmt-left col-mgmt-right">
-            <div class="col-mgmt">
                 <div class="table-responsive">
                 <table class="table table-condensed">
                 	<tbody>
                     <tr>
-                    <td>Order Status:</td>
-                    <td><%= order.order_status_id %></td>
+                    <td style="padding: 2px 5px;">Order Status:</td>
+                    <td style="padding: 2px 5px;"><%= order.order_status_id %></td>
                     </tr>
                     <tr>
-                    <td>Ordered Date:</td>
-                    <td>3/28/15</td>
+                    <td style="padding: 2px 5px;">Ordered Date:</td>
+                    <td style="padding: 2px 5px;">3/28/15</td>
                     </tr>
                     <tr>
-                    <td>Creator Name:</td>
-                    <td>Pet Athletics</td>
+                    <td style="padding: 2px 5px;">Creator Name:</td>
+                    <td style="padding: 2px 5px;">Pet Athletics</td>
                     </tr>
                     <tr>
-                    <td colspan="2"><span>Shipping Information</span></td>
+                    <td colspan="2" style="padding: 2px 5px;"><span>Shipping Information</span></td>
                     </tr>
                     <% if !order.order_sh_date.nil? %>
                     <%= link_to 'Update Order', edit_creator_management_order_path(order), :class => 'btn btn-primary' %><br />
 					<% end %>
 					<tr>
-					<td>
+					<td style="padding: 2px 5px;">
 					Retailer: <%= order.user.company_name %>
 					</td>
 					</tr>
 					<tr>
-					<td>
+					<td style="padding: 2px 5px;">
 					Retailer Email: <%= order.user.email %>
 					</td>
 					</tr>
                     <tr>
-                    <td>Date Shipped:</td>
-                    <td><%= order.order_sh_date %></td>
+                    <td style="padding: 2px 5px;">Date Shipped:</td>
+                    <td style="padding: 2px 5px;"><%= order.order_sh_date %></td>
                     </tr>
                     <tr>
-                    <td>Carrier:</td>
-                    <td><%= order.ship_type %></td>
+                    <td style="padding: 2px 5px;">Carrier:</td>
+                    <td style="padding: 2px 5px;"><%= order.ship_type %></td>
                     </tr>
                     <tr>
-                    <td>Tracking #:</td>
-                    <td><%= order.tracking %></td>
+                    <td style="padding: 2px 5px;">Tracking #:</td>
+                    <td style="padding: 2px 5px;"><%= order.tracking %></td>
                     </tr>
                     <tr>
-                    <td colspan="2"><span>Cost</span></td>
+                    <td colspan="2" style="padding: 2px 5px;"><span>Cost</span></td>
                     </tr>
                     <tr>
-                    <td>Subtotal</td>
-                    <td><%= number_to_currency(order.subtotal) %></td>
+                    <td style="padding: 2px 5px;">Subtotal</td>
+                    <td style="padding: 2px 5px;"><%= number_to_currency(order.subtotal) %></td>
                     </tr>
                     <tr>
-                    <td>Shipping</td>
-                    <td><%= number_to_currency(order.shipping) %></td>
+                    <td style="padding: 2px 5px;">Shipping</td>
+                    <td style="padding: 2px 5px;"><%= number_to_currency(order.shipping) %></td>
                     </tr>
                     <tr>
-                    <td>Total Cost</td>
-                    <td><%= number_to_currency(order.total) %></td>
+                    <td style="padding: 2px 5px;">Total Cost</td>
+                    <td style="padding: 2px 5px;"><%= number_to_currency(order.total) %></td>
                     </tr>
                     </tbody>
                 </table>
                 </div>
-            </div>
-            
-            </div>
-            
-            
-		<% end %>
+            <% end %>
 		<div class="clearfix"></div>	
 	<% end %>
-        </div><!--order-mgmt ends-->
-    </div><!--signup-box ends-->
 </section>
