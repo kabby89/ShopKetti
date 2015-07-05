@@ -3,9 +3,7 @@
         <div class="col-md-offset-3 col-md-6">
         	<div class="col-md-4">
             	<div style="border: 1px solid #25AAE1;">
-                    <% @user.each do |picture| %>
-                        <%= image_tag picture.picture_url(:profile) %>
-                    <% end %>
+                    <%= image_tag @user.logo_url(:profile) %>
                 </div>
                 <div>
                 	<h2 style="font-size: 19px; color: #58595B; text-align: left; margin-bottom: 5px; font-weight: 300;"><%= @user.company_name %></h2>
