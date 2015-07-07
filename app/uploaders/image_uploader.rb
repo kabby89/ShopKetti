@@ -32,36 +32,26 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_fit => [800, 800]
+  
+  #needed
   version :large do
     process :resize_to_fill => [500, 300]
   end
 
   #Product description pages
-  version :product_large do
-    process :resize_to_fill => [510,310]
-  end
-
-  #Product description pages
+  #needed
   version :product_small do
     process :resize_to_fill => [140, 105]
   end
 
-  #Product management pages
-  version :product_xs do
-    process :resize_to_fill => [140, 80]
-  end
 
   #Marketplace and My Storefront pages
+  #needed
   version :small do
     process :resize_to_fill => [320, 300]
   end
 
-  #My profile page
-  version :profile do 
-    process :resize_to_fill => [255, 255]
-  end
-
+  #needed
   version :thumb do
      process :resize_to_fill => [150, 150]
   end

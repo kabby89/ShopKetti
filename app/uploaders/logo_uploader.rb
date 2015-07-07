@@ -32,34 +32,15 @@ class LogoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :resize_to_fit => [800, 800]
-  
-  version :large do
-    process :resize_to_fill => [500, 300]
-  end
 
-  version :product_large do
-    process :resize_to_fill => [510,310]
-  end
-
-  version :product_small do
-    process :resize_to_fill => [140, 105]
-  end
-
-  version :product_xs do
-    process :resize_to_fill => [140, 80]
-  end
-
+  #needed
   version :small do
     process :resize_to_fill => [320, 300]
   end
 
+  #needed
   version :profile do 
     process :resize_to_fill => [255, 255]
-  end
-
-  version :thumb do
-     process :resize_to_fill => [150, 150]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
