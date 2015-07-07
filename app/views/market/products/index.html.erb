@@ -37,22 +37,22 @@
             <h3>10,280 Found</h3> -->
         </div><!--marketplace ends-->
         <div class="market-store">
-        	<ul>
         		<% @products.each do |item| %>
-            <li><div class="cols">
-            	<div class="text-center">
-                    <%= link_to market_stores_product_path(item) do %>
-            		<% item.product_images.each do |picture| %>
-					<% if picture.featured == true %>
-						<%= image_tag picture.image_url(:small) %>	
-					<% end %>
-				<% end %>
-				</div>
-                <div class="product-info">
-                	<h2><%= item.name %></h2>
-                    <% end %>
-                    <h3><%= number_to_currency item.price %></h3>
-                </div><!--product-info ends-->
+                    <% if item.name.present? %>
+                    <div class="cols">
+            	       <div class="text-center">
+                        <%= link_to market_stores_product_path(item) do %>
+            		        <% item.product_images.each do |picture| %>
+					           <% if picture.featured == true %>
+						          <%= image_tag picture.image_url(:small) %>	
+					           <% end %>
+				            <% end %>
+				        </div>
+                        <div class="product-info">
+                            <h2><%= item.name %></h2>
+                        <% end %>
+                            <h3><%= number_to_currency item.price %></h3>
+                        </div><!--product-info ends-->
                 <!-- <div class="product-rating">
                 	<ul class="stars">
                     <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -67,9 +67,11 @@
                     <li><a href="#"><img src="images/color3.jpg" alt=""></a></li>
                     </ul>
                 </div>--> <!--product-rating ends-->
-            </div><!--cols ends--></li>
-            <% end %>
-            </ul>
+                    </div><!--cols ends-->
+                    <% else %>
+                    <% end %>
+                <% end %>
+
         </div><!--market-store ends-->
     </div><!--signup-box ends-->
 </section>
