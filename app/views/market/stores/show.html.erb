@@ -1,6 +1,7 @@
 <section class="container">
 	<div class="signup-wrap product-wrap product-mgmt product-lists center-me">
 	<%= image_tag current_store.logo_url(:profile) %>
+	<h2><%= current_store.company_name %> Store Front</h2>
 	<div class="market-store store-front">
 	<% @products.each do |product| %>
 		<div class="cols">
