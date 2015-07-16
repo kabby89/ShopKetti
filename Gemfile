@@ -3,6 +3,8 @@ group :production do
 	gem 'rails_12factor'
 end
 
+gem 'recaptcha', :require => 'recaptcha/rails'
+
 # WePay
 gem 'wepay'
 

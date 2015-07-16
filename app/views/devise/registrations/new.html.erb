@@ -78,6 +78,7 @@
                 <label for="check"><span>I agree to the Ketti, LLC <a href="#">Terms and Conditions</a></span></label>
                 </div>
                 <%= f.hidden_field :user_type, :value => :creator %> <!-- This is to set the user as a creator -->
+                <%= recaptcha_tags %>
               <%= f.submit "Join ShopKetti" %>
             </div>
             

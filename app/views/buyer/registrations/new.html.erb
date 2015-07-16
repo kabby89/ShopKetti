@@ -107,6 +107,7 @@
                 <label for="check"><span>I agree to the Ketti, LLC <a href="#">Terms and Conditions</a></span></label>
                 </div>
                 <%= f.hidden_field :user_type, :value => :retailer %><!-- This sets the user type to retailer -->
+                <%= recaptcha_tags %>
               <%= f.submit "Join ShopKetti" %>
             </div>
             
